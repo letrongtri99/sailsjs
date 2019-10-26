@@ -7,20 +7,22 @@
 
 module.exports = {
 
-  attributes: {
-      title:{
-        type:'string',
-        required: true
-      },
-      picture:{
-        type:'string',
-        required: true
-      },
-      description:{
-        type:'string',
-        required: true
-      }
-  },
+    attributes: {
+        title: {
+            type: 'string',
+            required: true
+        },
+        picture: {
+            type: 'string',
+            required: true
+        },
+        description: {
+            type: 'string',
+            required: true
+        },
+        author: {
+            model: 'user'
+        }
+    },
 
 };
-

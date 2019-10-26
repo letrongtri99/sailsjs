@@ -1,29 +1,33 @@
-module.exports={
-    attributes:{
-        name:{
-            type:'string',
+module.exports = {
+    attributes: {
+        name: {
+            type: 'string',
             required: true
         },
-        role:{
-            type:'string',
+        role: {
+            type: 'string',
             required: true
         },
-        email:{
-            type:'string',
+        email: {
+            type: 'string',
             required: true,
             unique: true
         },
-        pass:{
-            type:'string',
+        pass: {
+            type: 'string',
             required: true
         },
-        post:{
-            type:'number',
-            defaultsTo:0
+        post: {
+            type: 'number',
+            defaultsTo: 0
         },
-        status:{
-            type:'string',
-            defaultsTo:'Hoạt Động'
+        status: {
+            type: 'string',
+            defaultsTo: 'Hoạt Động'
+        },
+        posts: {
+            collection: 'posts',
+            via: 'author'
         }
     },
 }

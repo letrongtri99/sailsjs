@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Le Trong Tri's Website</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
-    <%/* <meta name="robots" content="noindex"> */%>
+        <%/* <meta name="robots" content="noindex"> */%>
 
 
-    <!--
+            <!--
         Stylesheets and Preprocessors
         ==============================
 
@@ -30,98 +31,111 @@
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
-    <!--STYLES END-->
-    <script src="/js/logout.js"></script> 
-  </head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <!--STYLES-->
+            <link rel="stylesheet" href="/styles/importer.css">
+            <!--STYLES END-->
+            <script src="/js/logout.js"></script>
+</head>
+<style>
 
-  <body class="container">
+</style>
+
+<body class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <div class="container">
-        
-        <a class="navbar-brand js-scroll-trigger" href="/">Home</a>
-          <%if(!req.session.currentUser){%>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/signup">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/signin">Sign In</a>
-            </li>
-          </ul>
-        </div>
-        <%}
-        else if(req.session.currentUser.role =='Admin'){%>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
-                </li>
-                <li class="nav-item">
-                  <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/makepost">Make Post</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/article">Article Manager</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/showuser">All Acounts</a>
-                </li>
-                <li class="nav-item">
-                  <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
-                </li>
-              </ul>
-            </div>
-          <%}
-          else if(req.session.currentUser.role =='Editor'){%>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
-                  </li>
-                  <li class="nav-item">
-                    <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/makepost">Make Post</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/article">Article Manager</a>
-                  </li>
-                  <li class="nav-item">
-                    <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
-                  </li>
-                </ul>
-              </div>
-            <%}
-            else if(req.session.currentUser.role =='Viewer'){%>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
-                    </li>
-                    <li class="nav-item">
-                      <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
-                    </li>
-                    <li class="nav-item">
-                      <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
-                    </li>
-                  </ul>
+        <div class="container">
+
+            <a class="navbar-brand js-scroll-trigger" href="/">Home</a>
+            <%if(!req.session.currentUser){%>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="/signup">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="/signin">Sign In</a>
+                        </li>
+                    </ul>
                 </div>
-              <%}%>
-      </div>
+                <%}
+        else if(req.session.currentUser.role =='Admin'){%>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
+                            </li>
+                            <li class="nav-item">
+                                <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="/makepost">Make Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="/article">Article Manager</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="/showuser">All Acounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <%}
+          else if(req.session.currentUser.role =='Editor'){%>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
+                                </li>
+                                <li class="nav-item">
+                                    <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="/makepost">Make Post</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="/article">Article Manager</a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <%}
+            else if(req.session.currentUser.role =='Viewer'){%>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <label class="nav-link js-scroll-trigger">Chào Mừng <%=req.session.currentUser.name %></label>
+                                    </li>
+                                    <li class="nav-item">
+                                        <label class="nav-link js-scroll-trigger">Quyền: <%=req.session.currentUser.role %></label>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="btn btn-danger navbar-btn" id="logout">Log Out</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <%}%>
+        </div>
     </nav>
     <br/><br/></br>
+
     <%- body %>
-    
+        <br><br>
+        <div class="fixed-bottom">
+            <footer class="py-2 bg-dark mt-5 ">
+                <div class="container">
+                    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
 
 
-    <!--
+
+        <!--
         Client-side Templates
         ========================
 
@@ -142,11 +156,11 @@
               stringfile before they're served.
     -->
 
-    <!--TEMPLATES-->
-    <!--TEMPLATES END-->
+        <!--TEMPLATES-->
+        <!--TEMPLATES END-->
 
 
-    <!--
+        <!--
         Server-side View Locals
         ========================
 
@@ -162,7 +176,7 @@
     -->
 
 
-    <!--
+        <!--
 
       Client-side Javascript
       ========================
@@ -185,11 +199,11 @@
 
     -->
 
-    
-    <script src="/dependencies/sails.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
 
+        <script src="/dependencies/sails.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
