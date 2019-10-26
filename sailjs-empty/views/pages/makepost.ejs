@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 <div class="container">
     <div class="row">
 
@@ -18,7 +19,10 @@
                 <div style="margin-bottom: 10px;" id="imgHelp" role="alert"></div>
                 <div class="form-group">
                     <label style="font-size:20px;" for="description">Description</label>
-                    <textarea rows="5" id="description" class="form-control" name="description"></textarea>
+                    <div>
+                        <textarea rows="20" name="editor" id="editor"></textarea>
+                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -33,6 +37,15 @@
     </div>
 </div>
 <script>
+    var data;
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(newEditor => {
+            data = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
     const picture = document.getElementById("picture");
     const make = document.getElementById("makepost");
 
@@ -58,9 +71,10 @@
         }
     })
     make.addEventListener('click', (e) => {
+        const editorData = data.getData();
+        console.log(editorData);
         const formData = new FormData();
         formData.append("picture", imageFile);
-        console.log(formData);
         fetch(`http://localhost:1337/posts/upload`, {
                 method: "POST",
                 credentials: "include",
@@ -75,7 +89,6 @@
             .then((data) => {
                 console.log(data);
                 const title = document.getElementById("title");
-                const description = document.getElementById("description");
                 fetch("http://localhost:1337/posts/createpost", {
                         method: "POST",
                         headers: {
@@ -83,7 +96,7 @@
                         },
                         body: JSON.stringify({
                             title: title.value,
-                            description: description.value,
+                            description: editorData,
                             picture: data.url
                         }),
                         credentials: "include"
@@ -91,8 +104,8 @@
                     .then((res) => {
                         return res.json();
                     })
-                    .then((data) => {
-                        window.alert(data.message);
+                    .then((data2) => {
+                        window.alert(data2.message);
                         window.location.assign(`/`);
                     })
             })

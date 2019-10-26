@@ -18,6 +18,7 @@ module.exports = {
         })
     },
     create: (req, res) => {
+        console.log(req.body);
         Posts.create({
             title: req.body.title,
             picture: req.body.picture,
