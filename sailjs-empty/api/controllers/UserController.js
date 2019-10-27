@@ -57,7 +57,6 @@ module.exports = {
                     name: nowUser.name,
                     id: nowUser.id
                 }
-                console.log(req.session.currentUser);
                 res.json({
                     success: true,
                     message: 'Login success',
@@ -72,7 +71,6 @@ module.exports = {
         }
     },
     checkSession: async function(req, res, next) {
-        // console.log(req.session.currentUser);
         if (req.session.currentUser) {
             res.json({
                 success: true,

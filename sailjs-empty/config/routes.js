@@ -38,7 +38,9 @@ module.exports.routes = {
     'get /posts/delete/:id': 'PostsController.delete',
     'get /': 'PostsController.show',
     'get /postdetail/:id': 'PostsController.detail',
-    'get /article': 'PostsController.showInfo'
+    'get /article': 'PostsController.showInfo',
+    'get /editpost/:id': 'PostsController.detailsedit',
+    'post /updatepost/:id': 'PostsController.update'
         /***************************************************************************
          *                                                                          *
          * More custom routes here...                                               *

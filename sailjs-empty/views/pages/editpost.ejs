@@ -1,0 +1,149 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 col-md-offset-2">
+
+            <h1>Edit post</h1>
+
+            <form>
+
+                <div class="form-group">
+                    <label style="font-size:20px;">Title</label>
+                    <input type="text" id="title" class="form-control" value="<%=detailsedit.title%>" />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px;">Picture</label>
+                    <input type="file" id="picture" class="form-control" />
+                </div>
+                <div style="margin-bottom: 10px;" id="imgHelp">
+                    <img src="<%=detailsedit.picture%>" id="pic" alt='preview'></img>
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px;" for="description">Description</label>
+                    <div>
+                        <textarea rows="20" name="editor" id="editor">
+                            <%=detailsedit.description%>
+                        </textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <button type="button" id="makepost" class="btn btn-primary">
+    		            Update
+    		        </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    const url = window.location.pathname;
+    const id = url.substring(url.lastIndexOf('/') + 1);
+    var data;
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(newEditor => {
+            data = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    const picture = document.getElementById("picture");
+    const make = document.getElementById("makepost");
+    var link = document.getElementById("pic").src;
+    var imageFile;
+    picture.addEventListener('change', (e) => {
+        link = "";
+        const imageRegex = (/\.(gif|jpg|jpeg|tiff|png)$/i);
+        imageFile = event.target.files[0];
+        var imageSrc;
+        if (!imageRegex.test(imageFile.name)) {
+            document.getElementById("imgHelp").innerHTML = "Not image, please choose again";
+        } else if (imageFile.size > 400000) {
+            document.getElementById("imgHelp").innerHTML = "Too big size, please choose again";
+        } else {
+            document.getElementById("imgHelp").innerHTML = " ";
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(imageFile);
+            fileReader.onloadend = ((data) => {
+                imageSrc = data.currentTarget.result;
+                document.getElementById("imgHelp").insertAdjacentHTML(
+                    `beforeend`, `<img src="${imageSrc}" alt='preview'></img>`
+                )
+            });
+        }
+    })
+
+
+
+
+    make.addEventListener('click', (e) => {
+        if (link) {
+            const title = document.getElementById("title");
+            const editorData = data.getData();
+            fetch(`http://localhost:1337/updatepost/${id}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        title: title.value,
+                        description: editorData,
+                        picture: link
+                    }),
+                    credentials: "include"
+                })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data2) => {
+                    window.alert(data2.message);
+                    window.location.assign(`/postdetail/${id}`);
+                })
+        } else {
+            const editorData = data.getData();
+            console.log(editorData);
+            const formData = new FormData();
+            formData.append("picture", imageFile);
+            fetch(`http://localhost:1337/posts/upload`, {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    body: formData
+                })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    const title = document.getElementById("title");
+                    fetch(`http://localhost:1337/updatepost/${id}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                title: title.value,
+                                description: editorData,
+                                picture: data.url
+                            }),
+                            credentials: "include"
+                        })
+                        .then((res) => {
+                            return res.json();
+                        })
+                        .then((data2) => {
+                            window.alert(data2.message);
+                            window.location.assign(`/postdetail/${id}`);
+                        })
+                })
+        }
+
+    })
+</script>

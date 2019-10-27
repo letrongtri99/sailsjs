@@ -22,8 +22,8 @@
                         <%=a.author.name%>
                     </td>
                     <td>
-                        <a class="btn btn-info" role="button">View</a>
-                        <a class="btn btn-info" href="" role="button">Edit</a>
+                        <a class="btn btn-info" href="/postdetail/<%=a.id%>" role="button">View</a>
+                        <a class="btn btn-info" href="/editpost/<%=a.id%>" role="button">Edit</a>
                         <a href="/posts/delete/<%=a.id%>" class="btn btn-info" role="button">Delete</a>
                     </td>
                 </tr>

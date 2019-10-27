@@ -18,7 +18,7 @@ module.exports = {
         })
     },
     create: (req, res) => {
-        console.log(req.body);
+
         Posts.create({
             title: req.body.title,
             picture: req.body.picture,
@@ -56,6 +56,28 @@ module.exports = {
     delete: (req, res) => {
         Posts.destroy({ id: req.params.id }).exec((error, data) => {
             res.redirect('/article');
+        })
+    },
+    detailsedit: (req, res) => {
+        Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
+            res.view('pages/editpost', { detailsedit: data });
+        })
+    },
+    update: (req, res) => {
+        Posts.update({ id: req.params.id }, {
+            title: req.body.title,
+            picture: req.body.picture,
+            description: req.body.description
+        }).fetch().exec((error, data) => {
+            if (data) {
+                res.json({
+                    message: 'Update success'
+                })
+            } else {
+                res.json({
+                    message: 'Update failed'
+                })
+            }
         })
     }
 };
