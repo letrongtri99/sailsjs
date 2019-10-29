@@ -131,5 +131,11 @@ module.exports = {
             })
         }
         res.redirect('/showuser');
+    },
+    error: (req, res, next) => {
+        res.view('404');
+    },
+    makepost: (req, res, next) => {
+        res.view('pages/makepost');
     }
 };

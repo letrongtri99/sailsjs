@@ -23,7 +23,7 @@ module.exports.routes = {
     'get /showuser': 'UserController.show',
     '/signup': { view: 'pages/signup' },
     '/signin': { view: 'pages/signin' },
-    '/makepost': { view: 'pages/makepost' },
+    '/makepost': 'UserController.makepost',
     'get /api/random-quote': 'QuoteController.getQuote',
     'get /api/protected/random-quote': 'QuoteController.getProtectedQuote',
     'post /user/create': 'UserController.create',
@@ -40,7 +40,8 @@ module.exports.routes = {
     'get /postdetail/:id': 'PostsController.detail',
     'get /article': 'PostsController.showInfo',
     'get /editpost/:id': 'PostsController.detailsedit',
-    'post /updatepost/:id': 'PostsController.update'
+    'post /updatepost/:id': 'PostsController.update',
+    'get /error': 'UserController.error'
         /***************************************************************************
          *                                                                          *
          * More custom routes here...                                               *

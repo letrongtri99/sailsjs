@@ -25,6 +25,10 @@ module.exports = {
             description: req.body.description,
             author: req.session.currentUser.id
         }).fetch().exec((error, data) => {
+            User.findOne({ id: data.author }).exec((error2, data2) => {
+                up = ++data2.post;
+                User.update({ id: data.author }, { post: up }).fetch().exec((error3, data3) => {})
+            })
             if (error) {
                 res.json({
                     success: false,
@@ -54,9 +58,17 @@ module.exports = {
         })
     },
     delete: (req, res) => {
-        Posts.destroy({ id: req.params.id }).exec((error, data) => {
-            res.redirect('/article');
+        Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
+            User.findOne({ id: data.author.id }).exec((error2, data2) => {
+                down = --data2.post;
+                User.update({ id: data.author.id }, { post: down }).fetch().exec((error3, data3) => {
+                    Posts.destroy({ id: req.params.id }).exec((error4, data4) => {
+                        res.redirect('/article');
+                    })
+                })
+            })
         })
+
     },
     detailsedit: (req, res) => {
         Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
