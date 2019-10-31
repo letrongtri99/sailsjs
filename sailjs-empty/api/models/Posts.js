@@ -22,6 +22,10 @@ module.exports = {
         },
         author: {
             model: 'user'
+        },
+        makeday: {
+            type: "string",
+            columnType: "datetime"
         }
     },
 

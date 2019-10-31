@@ -8,6 +8,7 @@
                 <th scope="col">Number of Posts</th>
                 <th scope="col">Status</th>
                 <th scope="col">Role</th>
+                <th scope="col">Last Login</th>
                 <th scope="col">Tools</th>
             </tr>
         </thead>
@@ -30,7 +31,9 @@
                         <%=a.role%>
                     </td>
                     <td>
-                        <a class="btn btn-info" role="button">View</a>
+                        <%=a.last_login%>
+                    </td>
+                    <td>
                         <a class="btn btn-info" href="" role="button" data-toggle="modal" data-target="#h1<%=a.id%>" id="edit">Edit</a>
                         <%if(a.email !==req.session.currentUser.email){%>
                             <a href="/user/delete/<%=a.id%>" class="btn btn-info" role="button">Delete</a>

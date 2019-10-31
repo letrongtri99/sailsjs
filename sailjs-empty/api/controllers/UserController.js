@@ -4,6 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
+const moment = require('moment');
 module.exports = {
     create: async function(req, res, next) {
         const { email, role, pass, name } = req.body;
@@ -40,7 +41,8 @@ module.exports = {
             return res.view('pages/showuser', { nguoi: data });
         })
     },
-    signin: async function(req, res, next) {
+    signinNow: async function(req, res, next) {
+        // var timeStamp = Math.floor(Date.now() / 1000);
         const { email, pass } = req.body;
         var nowUser = await User.findOne({ email: email });
         if (!nowUser) {
@@ -49,7 +51,12 @@ module.exports = {
                 message: 'Account is not signed up'
             })
         } else {
-            if (nowUser.pass === pass) {
+            if (nowUser.status == 'Vô Hiệu Hóa') {
+                res.json({
+                    success: false,
+                    message: 'Account is deactived'
+                })
+            } else if (nowUser.pass === pass) {
                 req.session.currentUser = {
                     email: nowUser.email,
                     pass: nowUser.pass,
@@ -57,6 +64,11 @@ module.exports = {
                     name: nowUser.name,
                     id: nowUser.id
                 }
+                var ts = new Date();
+                var time = ts.toLocaleString("vi-VN", { timeZone: "Asia/Bangkok" })
+                User.update({ id: req.session.currentUser.id }, {
+                    last_login: time
+                }).fetch().exec((error, data) => {})
                 res.json({
                     success: true,
                     message: 'Login success',
@@ -137,5 +149,11 @@ module.exports = {
     },
     makepost: (req, res, next) => {
         res.view('pages/makepost');
+    },
+    signin: (req, res, next) => {
+        res.view('pages/signin');
+    },
+    signup: (req, res, next) => {
+        res.view('pages/signup');
     }
 };

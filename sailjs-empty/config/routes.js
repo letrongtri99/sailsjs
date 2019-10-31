@@ -21,13 +21,13 @@ module.exports.routes = {
 
 
     'get /showuser': 'UserController.show',
-    '/signup': { view: 'pages/signup' },
-    '/signin': { view: 'pages/signin' },
+    'get /signup': 'UserController.signup',
+    'get /signin': 'UserController.signin',
     '/makepost': 'UserController.makepost',
     'get /api/random-quote': 'QuoteController.getQuote',
     'get /api/protected/random-quote': 'QuoteController.getProtectedQuote',
     'post /user/create': 'UserController.create',
-    'post /user/signin': 'UserController.signin',
+    'post /user/signin': 'UserController.signinNow',
     'get /user/show': 'UserController.show',
     'get /user/checkSession': 'UserController.checkSession',
     'get /user/logout': 'UserController.logout',

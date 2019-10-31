@@ -1,3 +1,4 @@
+const moment = require('moment');
 module.exports = {
     attributes: {
         name: {
@@ -28,6 +29,11 @@ module.exports = {
         posts: {
             collection: 'posts',
             via: 'author'
+        },
+        last_login: {
+            type: "string",
+            columnType: "datetime"
+
         }
     },
 }

@@ -12,8 +12,22 @@ module.exports.policies = {
     '*': 'flash',
     UserController: {
         // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
-        show: ['isAdmin', 'flash']
-    }
+        show: ['isAdmin', 'flash'],
+        makepost: ['isEditorAdmin', 'flash'],
+        signin: ['isSignIn', 'flash'],
+        delete: ['isAdmin', 'flash'],
+        update: ['isAdmin', 'flash']
+    },
+    PostsController: {
+        showInfo: ['isEditorAdmin', 'flash'],
+        upload: ['isEditorAdmin', 'flash'],
+        create: ['isEditorAdmin', 'flash'],
+        delete: ['isEditorAdmin', 'flash'],
+        detailsedit: ['isEditorAdmin', 'flash'],
+        update: ['isEditorAdmin', 'flash']
+    },
+
+
 
     /***************************************************************************
      *                                                                          *

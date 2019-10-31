@@ -25,6 +25,11 @@ module.exports = {
             description: req.body.description,
             author: req.session.currentUser.id
         }).fetch().exec((error, data) => {
+            var ts = new Date();
+            var time = ts.toLocaleString("vi-VN", { timeZone: "Asia/Bangkok" })
+            Posts.update({ id: data.id }, {
+                makeday: time
+            }).fetch().exec((error, data) => {})
             User.findOne({ id: data.author }).exec((error2, data2) => {
                 up = ++data2.post;
                 User.update({ id: data.author }, { post: up }).fetch().exec((error3, data3) => {})
