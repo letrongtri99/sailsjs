@@ -73,6 +73,7 @@
         imageFile = event.target.files[0];
         var imageSrc;
         if (!imageRegex.test(imageFile.name)) {
+            picture.value = "";
             document.getElementById("imgHelp").innerHTML = "Not image, please choose again";
         } else if (imageFile.size > 400000) {
             picture.value = "";

@@ -59,7 +59,14 @@ module.exports = {
     },
     detail: (req, res) => {
         Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
-            res.view('pages/detailpost', { detail: data });
+            if (!data) {
+                req.session.flash = {
+                    message: "No post found"
+                }
+                res.redirect('/error');
+            } else {
+                res.view('pages/detailpost', { detail: data });
+            }
         })
     },
     delete: (req, res) => {
@@ -77,7 +84,14 @@ module.exports = {
     },
     detailsedit: (req, res) => {
         Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
-            res.view('pages/editpost', { detailsedit: data });
+            if (!data) {
+                req.session.flash = {
+                    message: "No post found"
+                }
+                res.redirect('/error');
+            } else {
+                res.view('pages/editpost', { detailsedit: data });
+            }
         })
     },
     update: (req, res) => {

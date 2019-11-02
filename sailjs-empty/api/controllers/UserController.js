@@ -111,9 +111,13 @@ module.exports = {
         })
     },
     delete: function(req, res, next) {
-        User.destroy({ id: req.params.id }).exec((error, data) => {
-            res.redirect('/showuser');
-        })
+        req.session.flash = {
+            message: "You are crazy"
+        }
+        res.redirect('/showuser');
+        // User.destroy({ id: req.params.id }).exec((error, data) => {
+        //     res.redirect('/showuser');
+        // })
 
     },
     update: function(req, res, next) {

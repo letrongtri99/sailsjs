@@ -41,6 +41,23 @@
     </div>
 </div>
 <script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
     const url = window.location.pathname;
     const id = url.substring(url.lastIndexOf('/') + 1);
     var data;
@@ -52,18 +69,21 @@
         .catch(error => {
             console.error(error);
         });
-    const picture = document.getElementById("picture");
+    var picture = document.getElementById("picture");
     const make = document.getElementById("makepost");
-    var link = document.getElementById("pic").src;
+
     var imageFile;
+    var link = document.getElementById("pic").src;
     picture.addEventListener('change', (e) => {
         link = "";
         const imageRegex = (/\.(gif|jpg|jpeg|tiff|png)$/i);
         imageFile = event.target.files[0];
         var imageSrc;
         if (!imageRegex.test(imageFile.name)) {
+            picture.value = "";
             document.getElementById("imgHelp").innerHTML = "Not image, please choose again";
         } else if (imageFile.size > 400000) {
+            picture.value = "";
             document.getElementById("imgHelp").innerHTML = "Too big size, please choose again";
         } else {
             document.getElementById("imgHelp").innerHTML = " ";
@@ -72,7 +92,7 @@
             fileReader.onloadend = ((data) => {
                 imageSrc = data.currentTarget.result;
                 document.getElementById("imgHelp").insertAdjacentHTML(
-                    `beforeend`, `<img src="${imageSrc}" alt='preview'></img>`
+                    `beforeend`, `<img src="${imageSrc}" id="pic" alt='preview'></img>`
                 )
             });
         }
@@ -80,33 +100,38 @@
 
 
 
-
+    const title = document.getElementById("title");
     make.addEventListener('click', (e) => {
-        if (link) {
-            const title = document.getElementById("title");
-            const editorData = data.getData();
-            fetch(`http://localhost:1337/updatepost/${id}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        title: title.value,
-                        description: editorData,
-                        picture: link
-                    }),
-                    credentials: "include"
-                })
-                .then((res) => {
-                    return res.json();
-                })
-                .then((data2) => {
-                    window.alert(data2.message);
-                    window.location.assign(`/postdetail/${id}`);
-                })
+        const editorData = data.getData();
+        if (!picture.value && link) {
+            if (!title.value || !editorData) {
+                toastr["error"]("No enough information");
+            } else {
+                fetch(`http://localhost:1337/updatepost/${id}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            title: title.value,
+                            description: editorData,
+                            picture: link
+                        }),
+                        credentials: "include"
+                    })
+                    .then((res) => {
+                        return res.json();
+                    })
+                    .then((data2) => {
+                        toastr["success"](data2.message);
+                        setTimeout(function() {
+                            window.location.assign(`/postdetail/${id}`);
+                        }, 1000);
+                    })
+            }
+        } else if (!picture.value || !title.value || !editorData) {
+            toastr["error"]("No enough information");
         } else {
-            const editorData = data.getData();
-            console.log(editorData);
             const formData = new FormData();
             formData.append("picture", imageFile);
             fetch(`http://localhost:1337/posts/upload`, {
@@ -121,8 +146,6 @@
                     return res.json();
                 })
                 .then((data) => {
-                    console.log(data);
-                    const title = document.getElementById("title");
                     fetch(`http://localhost:1337/updatepost/${id}`, {
                             method: "POST",
                             headers: {
@@ -139,8 +162,10 @@
                             return res.json();
                         })
                         .then((data2) => {
-                            window.alert(data2.message);
-                            window.location.assign(`/postdetail/${id}`);
+                            toastr["success"](data2.message);
+                            setTimeout(function() {
+                                window.location.assign(`/postdetail/${id}`);
+                            }, 2000);
                         })
                 })
         }
