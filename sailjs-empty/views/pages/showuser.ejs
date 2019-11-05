@@ -1,127 +1,175 @@
 <div class="container">
+    <%if(flash){%>
+        <div>
+            <%=flash.message%>
+        </div>
+        <%}%>
+            Accounts Manager
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Number of Posts</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Last Login</th>
+                        <th scope="col">Tools</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    Accounts Manager
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Number of Posts</th>
-                <th scope="col">Status</th>
-                <th scope="col">Role</th>
-                <th scope="col">Last Login</th>
-                <th scope="col">Tools</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%nguoi.forEach(function(a){%>
-                <tr>
-                    <td>
-                        <%=a.id%>
-                    </td>
-                    <td>
-                        <%=a.name%>
-                    </td>
-                    <td>
-                        <%=a.post%>
-                    </td>
-                    <td>
-                        <%=a.status%>
-                    </td>
-                    <td>
-                        <%=a.role%>
-                    </td>
-                    <td>
-                        <%=a.last_login%>
-                    </td>
-                    <td>
-                        <a class="btn btn-info" href="" role="button" data-toggle="modal" data-target="#h1<%=a.id%>" id="edit">Edit</a>
-                        <%if(a.email !==req.session.currentUser.email){%>
-                            <a href="/user/delete/<%=a.id%>" class="btn btn-info" role="button">Delete</a>
+                    <%nguoi.forEach(function(a){%>
+                        <%if(a.isDeleted ==0) {%>
+                            <tr>
+                                <td>
+                                    <%=a.id%>
+                                </td>
+                                <td>
+                                    <%=a.name%>
+                                </td>
+                                <td>
+                                    <%=a.post%>
+                                </td>
+                                <td>
+                                    <%=a.status%>
+                                </td>
+                                <td>
+                                    <%=a.role%>
+                                </td>
+                                <td>
+                                    <%=a.last_login%>
+                                </td>
+                                <td>
+                                    <a class="btn btn-info" href="" role="button" data-toggle="modal" data-target="#h1<%=a.id%>" id="edit">Edit</a>
+                                    <%if(a.email !==req.session.currentUser.email){%>
+                                        <button onclick="me('<%=a.id%>')" class="btn btn-info" role="button">Delete</button>
+                                        <%}%>
+                                </td>
+                            </tr>
                             <%}%>
-                    </td>
-                </tr>
-                <%})%>
-        </tbody>
+                                <%})%>
+                </tbody>
 
-    </table>
-    <%nguoi.forEach(function(a){%>
-        <div class="modal fade" id="h1<%=a.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </table>
+            <%nguoi.forEach(function(a){%>
+                <div class="modal fade" id="h1<%=a.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit info</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/user/update/<%=a.id%>" method="POST">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input name="email" type="email" id="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<%=a.email%>">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input name="pass" type="password" id="Pass" class="form-control" placeholder="Password" value="<%=a.pass%>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Name</label>
-                                <input name="name" type="text" id="Name" class="form-control" placeholder="Password" value="<%=a.name%>">
-                            </div>
-                            <%if(a.role == 'Editor'){%>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Role</label>
-                                    <select class="form-control" name="role" id="role">
-                                  <option>Editor</option>
-                                  <option>Viewer</option>
-                              </select>
-                                </div>
-                                <%} 
-                            else if(a.role =='Viewer'){%>
+                            <div class="modal-body">
+                                <form action="/user/update/<%=a.id%>" method="POST">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Role</label>
-                                        <select class="form-control" name="role" id="role">
-                                      <option>Viewer</option>
-                                      <option>Editor</option>
-                                  </select>
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input name="email" type="email" id="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<%=a.email%>">
                                     </div>
-                                    <%}
-                              else{%>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input name="pass" type="password" id="Pass" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Name</label>
+                                        <input name="name" type="text" id="Name" class="form-control" placeholder="Password" value="<%=a.name%>">
+                                    </div>
+                                    <%if(a.role == 'Editor'){%>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Role</label>
                                             <select class="form-control" name="role" id="role">
+                                  <option>Editor</option>
+                                  <option>Viewer</option>
+                              </select>
+                                        </div>
+                                        <%} 
+                            else if(a.role =='Viewer'){%>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Role</label>
+                                                <select class="form-control" name="role" id="role">
+                                      <option>Viewer</option>
+                                      <option>Editor</option>
+                                  </select>
+                                            </div>
+                                            <%}
+                              else{%>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Role</label>
+                                                    <select class="form-control" name="role" id="role">
                                         <option>Admin</option>
                                     </select>
-                                        </div>
-                                        <%}%>
-                                            <% 
+                                                </div>
+                                                <%}%>
+                                                    <% 
                             if(a.status == 'Hoạt Động' && a.role != 'Admin') {%>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Status</label>
-                                                    <select class="form-control" name="status" id="role">
+                                                        <div class="form-group">
+                                                            <label for="exampleFormControlSelect1">Status</label>
+                                                            <select class="form-control" name="status" id="role">
                                       <option>Hoạt Động</option>
                                       <option>Vô Hiệu Hóa</option>
                                   </select>
-                                                </div>
-                                                <%}
+                                                        </div>
+                                                        <%}
                               else if (a.status == 'Vô Hiệu Hóa' && a.role != 'Admin'){%>
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">Status</label>
-                                                        <select class="form-control" name="status" id="role">
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlSelect1">Status</label>
+                                                                <select class="form-control" name="status" id="role">
                                         <option>Vô Hiệu Hóa</option>
                                         <option>Hoạt Động</option>
                                     </select>
-                                                    </div>
-                                                    <%}%>
+                                                            </div>
+                                                            <%}%>
 
-                                                        <br/>
-                                                        <input type="submit" id="change" value="Save changes" class="btn btn-primary"></input>
-                        </form>
+                                                                <br/>
+                                                                <input type="submit" id="change" value="Save changes" class="btn btn-primary"></input>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <%})%>
-            <a href="/signup" class="btn btn-info" role="button">Add accounts</a>
+                <%})%>
+                    <a href="/signup" class="btn btn-info" role="button">Add accounts</a>
 </div>
+<script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    me = (a) => {
+        var del = window.confirm("Do you want to table");
+        var tri = a;
+        if (del) {
+            fetch(`http://localhost:1337/user/delete/${tri}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include"
+                })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data2) => {
+                    toastr["success"](data2.message);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 500);
+                })
+        }
+    }
+</script>

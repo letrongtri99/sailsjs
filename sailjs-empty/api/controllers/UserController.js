@@ -51,7 +51,7 @@ module.exports = {
                 message: 'Account is not signed up'
             })
         } else {
-            if (nowUser.status == 'Vô Hiệu Hóa') {
+            if (nowUser.status == 'Vô Hiệu Hóa' || nowUser.isDeleted == 1) {
                 res.json({
                     success: false,
                     message: 'Account is deactived'
@@ -111,40 +111,74 @@ module.exports = {
         })
     },
     delete: function(req, res, next) {
-        req.session.flash = {
-            message: "You are crazy"
-        }
-        res.redirect('/showuser');
-        // User.destroy({ id: req.params.id }).exec((error, data) => {
-        //     res.redirect('/showuser');
-        // })
+        User.update({ id: req.params.id }, {
+            isDeleted: 1
+        }).fetch().exec((error, data) => {
+            if (error) {
+                res.json({
+                    success: false,
+                    message: 'Deleted failed'
+                })
+            } else {
+                res.json({
+                    success: true,
+                    message: 'Deleted success'
+                })
+            }
+
+        })
 
     },
     update: function(req, res, next) {
         if (req.body.role != 'Admin') {
-            User.update({ id: req.params.id }, {
-                email: req.body.email,
-                role: req.body.role,
-                name: req.body.name,
-                pass: req.body.pass,
-                status: req.body.status
-            }).exec((error, data) => {
+            if (req.body.pass) {
+                User.update({ id: req.params.id }, {
+                    email: req.body.email,
+                    role: req.body.role,
+                    name: req.body.name,
+                    pass: req.body.pass,
+                    status: req.body.status
+                }).exec((error, data) => {
 
-            })
-        } else {
-            req.session.currentUser = {
-                email: req.body.email,
-                pass: req.body.pass,
-                role: req.body.role,
-                name: req.body.name,
+                })
+            } else {
+                User.update({ id: req.params.id }, {
+                    email: req.body.email,
+                    role: req.body.role,
+                    name: req.body.name,
+                    status: req.body.status
+                }).exec((error, data) => {
+
+                })
             }
-            User.update({ id: req.params.id }, {
-                email: req.body.email,
-                name: req.body.name,
-                pass: req.body.pass
-            }).exec((error, data) => {
+        } else {
+            if (req.body.pass) {
+                req.session.currentUser = {
+                    email: req.body.email,
+                    pass: req.body.pass,
+                    role: req.body.role,
+                    name: req.body.name,
+                }
+                User.update({ id: req.params.id }, {
+                    email: req.body.email,
+                    name: req.body.name,
+                    pass: req.body.pass
+                }).exec((error, data) => {
 
-            })
+                })
+            } else {
+                req.session.currentUser = {
+                    email: req.body.email,
+                    role: req.body.role,
+                    name: req.body.name,
+                }
+                User.update({ id: req.params.id }, {
+                    email: req.body.email,
+                    name: req.body.name,
+                }).exec((error, data) => {
+
+                })
+            }
         }
         res.redirect('/showuser');
     },

@@ -1,3 +1,12 @@
+<style>
+    .ellipsis {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        overflow: hidden;
+        width: 20em;
+    }
+</style>
 <div class="container">
     Article Manager
     <table class="table">
@@ -16,8 +25,8 @@
                     <td>
                         <%=a.id%>
                     </td>
-                    <td>
-                        <%=a.title.substring(0,40)%>
+                    <td class="ellipsis">
+                        <%=a.title%>
                     </td>
                     <td>
                         <%=a.makeday%>

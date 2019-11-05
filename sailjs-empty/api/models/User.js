@@ -34,6 +34,10 @@ module.exports = {
             type: "string",
             columnType: "datetime"
 
+        },
+        isDeleted: {
+            type: 'number',
+            defaultsTo: 0
         }
     },
 }

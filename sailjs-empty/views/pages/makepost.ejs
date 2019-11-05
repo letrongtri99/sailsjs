@@ -99,39 +99,43 @@
         if (!picture.value || !editorData || !title.value) {
             toastr["error"]('No enough info');
         } else {
-            fetch(`http://localhost:1337/posts/upload`, {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        Accept: "application/json"
-                    },
-                    body: formData
-                })
-                .then((res) => {
-                    return res.json();
-                })
-                .then((data) => {
-                    console.log(data);
-                    fetch("http://localhost:1337/posts/createpost", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                title: title.value,
-                                description: editorData,
-                                picture: data.url
-                            }),
-                            credentials: "include"
-                        })
-                        .then((res) => {
-                            return res.json();
-                        })
-                        .then((data2) => {
-                            toastr["success"](data2.message);
-                            window.location.assign(`/`);
-                        })
-                })
+            for (var i = 0; i < 50; i++) {
+                fetch(`http://localhost:1337/posts/upload`, {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            Accept: "application/json"
+                        },
+                        body: formData
+                    })
+                    .then((res) => {
+                        return res.json();
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        fetch("http://localhost:1337/posts/createpost", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    title: title.value,
+                                    description: editorData,
+                                    picture: data.url
+                                }),
+                                credentials: "include"
+                            })
+                            .then((res) => {
+                                return res.json();
+                            })
+                            .then((data2) => {
+                                toastr["success"](data2.message);
+                                setTimeout(function() {
+                                    window.location.assign(`/`);
+                                }, 1000);
+                            })
+                    })
+            }
         }
     })
 </script>

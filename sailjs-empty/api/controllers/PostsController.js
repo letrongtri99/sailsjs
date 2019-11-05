@@ -18,7 +18,6 @@ module.exports = {
         })
     },
     create: (req, res) => {
-
         Posts.create({
             title: req.body.title,
             picture: req.body.picture,
@@ -48,9 +47,21 @@ module.exports = {
         })
     },
     show: (req, res) => {
-        Posts.find().populate('author').sort([{ createdAt: 'desc' }]).exec((error, data) => {
-            return res.view('pages/index', { post: data })
-        })
+        var pageNumber = Number(req.query.pageNumber);
+        var total;
+        Posts.count().exec((error, data) => {
+            total = data;
+        });
+        if (!req.query.pageNumber) {
+            Posts.find({ limit: 5, skip: 0 }).populate('author').sort([{ createdAt: 'desc' }]).exec((error, data) => {
+                return res.view('pages/index', { post: data, total: total, page: 1 })
+            })
+        } else {
+            Posts.find({ limit: 5, skip: 5 * (pageNumber - 1) }).populate('author').sort([{ createdAt: 'desc' }]).exec((error, data) => {
+                return res.view('pages/index', { post: data, total: total, page: pageNumber })
+            })
+        }
+
     },
     showInfo: (req, res) => {
         Posts.find().populate('author').sort([{ createdAt: 'desc' }]).exec((error, data) => {

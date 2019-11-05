@@ -26,6 +26,10 @@ module.exports = {
         makeday: {
             type: "string",
             columnType: "datetime"
+        },
+        isDeleted: {
+            type: 'number',
+            defaultsTo: 0
         }
     },
 
