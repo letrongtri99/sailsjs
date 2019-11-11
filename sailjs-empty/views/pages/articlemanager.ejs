@@ -9,39 +9,34 @@
 </style>
 <div class="container">
     Article Manager
-    <table class="table">
+    <table id="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Created At</th>
-                <th scope="col">Author</th>
-                <th scope="col">Tools</th>
+                <th>#</th>
+                <th class="ellipsis">Title</th>
+                <th>Created At</th>
+                <th>Author</th>
+                <th>Tools</th>
             </tr>
         </thead>
-        <tbody>
-            <%post.forEach(function(a){%>
-                <tr>
-                    <td>
-                        <%=a.id%>
-                    </td>
-                    <td class="ellipsis">
-                        <%=a.title%>
-                    </td>
-                    <td>
-                        <%=a.makeday%>
-                    </td>
-                    <td>
-                        <%=a.author.name%>
-                    </td>
-                    <td>
-                        <a class="btn btn-info" href="/postdetail/<%=a.id%>" role="button">View</a>
-                        <a class="btn btn-info" href="/editpost/<%=a.id%>" role="button">Edit</a>
-                        <a href="/posts/delete/<%=a.id%>" class="btn btn-info" role="button">Delete</a>
-                    </td>
-                </tr>
-                <%})%>
-        </tbody>
-
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Created At</th>
+                <th>Author</th>
+                <th>Tools</th>
+            </tr>
+        </tfoot>
     </table>
 </div>
+<script>
+    var tab;
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "/getDataTable"
+        });
+    });
+</script>

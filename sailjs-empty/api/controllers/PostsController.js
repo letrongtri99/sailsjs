@@ -64,9 +64,9 @@ module.exports = {
 
     },
     showInfo: (req, res) => {
-        Posts.find().populate('author').sort([{ createdAt: 'desc' }]).exec((error, data) => {
-            return res.view('pages/articlemanager', { post: data })
-        })
+
+        return res.view('pages/articlemanager')
+
     },
     detail: (req, res) => {
         Posts.findOne({ id: req.params.id }).populate('author').exec((error, data) => {
@@ -121,5 +121,32 @@ module.exports = {
                 })
             }
         })
+    },
+    getDataTable: (req, res) => {
+        var pageNumber = Number(req.query.start);
+        var total;
+        Posts.count().exec((error, data) => {
+            total = data;
+        });
+
+
+        Posts.find({ where: { or: [{ title: { contains: req.query.search.value } }, { id: { contains: req.query.search.value } }] }, limit: req.query.length, skip: pageNumber }).populate('author').sort([{ createdAt: 'desc' }]).exec((error, data3) => {
+            var r = [];
+            data3.forEach(e => {
+                r.push([e.id, e.title, e.makeday, e.author.name, "<a class='btn btn-info' href='/postdetail/" + e.id + "' role='button'>View</a> <a class='btn btn-info' href='/editpost/" + e.id + "' role='button'>Edit</a> <a href='/posts/delete/" + e.id + "' class='btn btn-info' role='button'>Delete</a>"]);
+            });
+
+            Posts.count({ where: { or: [{ title: { contains: req.query.search.value } }, { id: { contains: req.query.search.value } }] } }).exec((error, d) => {
+                res.json({
+                    "draw": req.query.draw,
+                    "recordsTotal": total,
+                    "recordsFiltered": d,
+                    "data": r
+                })
+
+            })
+
+        })
+
     }
 };
