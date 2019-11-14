@@ -123,28 +123,60 @@ module.exports = {
         })
     },
     getDataTable: (req, res) => {
+        var orderColumn = req.query.order[0].column;
+        var nameColumn = req.query.columns[orderColumn].name;
+        var dir;
+        if (req.query.order[0].dir == 'asc') {
+            dir = 1;
+        } else {
+            dir = -1;
+        }
+        var b = {};
+        b[nameColumn] = dir;
         var pageNumber = Number(req.query.start);
         var total;
+        var db = Posts.getDatastore().manager;
+        var rawMongoCollection = db.collection(Posts.tableName);
+
         Posts.count().exec((error, data) => {
             total = data;
         });
+        rawMongoCollection.aggregate([{
+                $lookup: {
+                    from: "user",
+                    localField: "author",
+                    foreignField: "_id",
+                    as: "tri"
+                }
+            }, { $unwind: "$tri" },
+            { $match: { $or: [{ title: { $regex: req.query.search.value } }, { "tri.name": { $regex: req.query.search.value } }] } }, { $sort: b }, { $skip: Number(req.query.start) }, { $limit: Number(req.query.length) }
+        ]).toArray((e, a) => {
 
-
-        Posts.find({ where: { or: [{ title: { contains: req.query.search.value } }, { id: { contains: req.query.search.value } }] }, limit: req.query.length, skip: pageNumber }).populate('author').sort([{ createdAt: 'desc' }]).exec((error, data3) => {
             var r = [];
-            data3.forEach(e => {
-                r.push([e.id, e.title, e.makeday, e.author.name, "<a class='btn btn-info' href='/postdetail/" + e.id + "' role='button'>View</a> <a class='btn btn-info' href='/editpost/" + e.id + "' role='button'>Edit</a> <a href='/posts/delete/" + e.id + "' class='btn btn-info' role='button'>Delete</a>"]);
+            a.forEach(e => {
+                r.push([e._id, e.title, e.makeday, e.tri.name, "<a class='btn btn-info' href='/postdetail/" + e._id + "' role='button'>View</a> <a class='btn btn-info' href='/editpost/" + e._id + "' role='button'>Edit</a> <a href='/posts/delete/" + e._id + "' class='btn btn-info' role='button'>Delete</a>"]);
             });
 
-            Posts.count({ where: { or: [{ title: { contains: req.query.search.value } }, { id: { contains: req.query.search.value } }] } }).exec((error, d) => {
+            rawMongoCollection.aggregate([{
+                    $lookup: {
+                        from: "user",
+                        localField: "author",
+                        foreignField: "_id",
+                        as: "tri"
+                    }
+                }, { $unwind: "$tri" },
+                { $match: { $or: [{ title: { $regex: req.query.search.value } }, { "tri.name": { $regex: req.query.search.value } }] } }, { $count: "pass" }
+            ]).toArray((error, data6) => {
                 res.json({
                     "draw": req.query.draw,
                     "recordsTotal": total,
-                    "recordsFiltered": d,
+                    "recordsFiltered": data6[0].pass,
                     "data": r
                 })
-
             })
+
+
+
 
         })
 
