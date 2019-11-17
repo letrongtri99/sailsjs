@@ -42,7 +42,8 @@ module.exports.routes = {
     'get /editpost/:id': 'PostsController.detailsedit',
     'post /updatepost/:id': 'PostsController.update',
     'get /error': 'UserController.error',
-    'get /getDataTable': 'PostsController.getDataTable'
+    'get /getDataTable': 'PostsController.getDataTable',
+    'get /getDataUser': 'UserController.getDataUser'
         /***************************************************************************
          *                                                                          *
          * More custom routes here...                                               *

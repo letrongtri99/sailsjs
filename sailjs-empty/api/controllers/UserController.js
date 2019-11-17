@@ -193,5 +193,63 @@ module.exports = {
     },
     signup: (req, res, next) => {
         res.view('pages/signup');
+    },
+    getDataUser: (req, res) => {
+        var orderColumn = req.query.order[0].column;
+        var nameColumn = req.query.columns[orderColumn].name;
+        var dir;
+        if (req.query.order[0].dir == 'asc') {
+            dir = 1;
+        } else {
+            dir = -1;
+        }
+        var b = {};
+        b[nameColumn] = dir;
+        var pageNumber = Number(req.query.start);
+        var total;
+        var db = User.getDatastore().manager;
+        var rawMongoCollection = db.collection(User.tableName);
+
+        User.count({ isDeleted: 0 }).exec((error, data) => {
+            total = data;
+        });
+        rawMongoCollection.aggregate([
+            { $match: { $or: [{ name: { $regex: req.query.search.value, $options: 'i' } }, { status: { $regex: req.query.search.value, $options: 'i' } }, { role: { $regex: req.query.search.value, $options: 'i' } }] } }, { $sort: b }, { $skip: Number(req.query.start) }, { $limit: Number(req.query.length) }
+        ]).toArray((e, a) => {
+
+            var r = [];
+            a.forEach(e => {
+                if (e.isDeleted == 0 && e.email != req.session.currentUser.email) {
+                    r.push([e._id, e.name, e.post, e.status, e.role, e.last_login, " <a class='btn btn-info' href='' role='button' data-toggle='modal' data-target='#h1" + e._id + "' id='edit'>Edit</a> <button onclick='me(\"" + e._id + "\")' class='btn btn-info' role='button'>Delete</button>"]);
+                } else if (e.isDeleted == 0 && e.email == req.session.currentUser.email) {
+                    r.push([e._id, e.name, e.post, e.status, e.role, e.last_login, " <a class='btn btn-info' href='' role='button' data-toggle='modal' data-target='#h1" + e._id + "' id='edit'>Edit</a> "]);
+                }
+            });
+
+            rawMongoCollection.aggregate([
+                { $match: { $or: [{ name: { $regex: req.query.search.value, $options: 'i' } }, { status: { $regex: req.query.search.value, $options: 'i' } }, { role: { $regex: req.query.search.value, $options: 'i' } }], isDeleted: 0 } }, { $count: "pass" }
+            ]).toArray((error, data6) => {
+
+                if (data6.length == 0) {
+                    res.json({
+                        "draw": req.query.draw,
+                        "recordsTotal": total,
+                        "recordsFiltered": 0,
+                        "data": r
+                    })
+                } else {
+                    res.json({
+                        "draw": req.query.draw,
+                        "recordsTotal": total,
+                        "recordsFiltered": data6[0].pass,
+                        "data": r
+                    })
+                }
+            })
+
+
+
+
+        })
     }
 };

@@ -149,7 +149,7 @@ module.exports = {
                     as: "tri"
                 }
             }, { $unwind: "$tri" },
-            { $match: { $or: [{ title: { $regex: req.query.search.value } }, { "tri.name": { $regex: req.query.search.value } }] } }, { $sort: b }, { $skip: Number(req.query.start) }, { $limit: Number(req.query.length) }
+            { $match: { $or: [{ title: { $regex: req.query.search.value, $options: 'i' } }, { "tri.name": { $regex: req.query.search.value, $options: 'i' } }] } }, { $sort: b }, { $skip: Number(req.query.start) }, { $limit: Number(req.query.length) }
         ]).toArray((e, a) => {
 
             var r = [];
@@ -165,14 +165,24 @@ module.exports = {
                         as: "tri"
                     }
                 }, { $unwind: "$tri" },
-                { $match: { $or: [{ title: { $regex: req.query.search.value } }, { "tri.name": { $regex: req.query.search.value } }] } }, { $count: "pass" }
+                { $match: { $or: [{ title: { $regex: req.query.search.value, $options: 'i' } }, { "tri.name": { $regex: req.query.search.value, $options: 'i' } }] } }, { $count: "pass" }
             ]).toArray((error, data6) => {
-                res.json({
-                    "draw": req.query.draw,
-                    "recordsTotal": total,
-                    "recordsFiltered": data6[0].pass,
-                    "data": r
-                })
+
+                if (data6.length == 0) {
+                    res.json({
+                        "draw": req.query.draw,
+                        "recordsTotal": total,
+                        "recordsFiltered": 0,
+                        "data": r
+                    })
+                } else {
+                    res.json({
+                        "draw": req.query.draw,
+                        "recordsTotal": total,
+                        "recordsFiltered": data6[0].pass,
+                        "data": r
+                    })
+                }
             })
 
 
