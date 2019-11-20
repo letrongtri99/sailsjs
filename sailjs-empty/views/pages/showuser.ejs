@@ -23,36 +23,6 @@
                 <th>Last Login</th>
                 <th>Tools</th>
             </tr>
-            <!-- <%nguoi.forEach(function(a){%>
-                        <%if(a.isDeleted ==0) {%>
-                            <tr>
-                                <td>
-                                    <%=a.id%>
-                                </td>
-                                <td>
-                                    <%=a.name%>
-                                </td>
-                                <td>
-                                    <%=a.post%>
-                                </td>
-                                <td>
-                                    <%=a.status%>
-                                </td>
-                                <td>
-                                    <%=a.role%>
-                                </td>
-                                <td>
-                                    <%=a.last_login%>
-                                </td>
-                                <td>
-                                    <a class="btn btn-info" href="" role="button" data-toggle="modal" data-target="#h1<%=a.id%>" id="edit">Edit</a>
-                                    <%if(a.email !==req.session.currentUser.email){%>
-                                        <button onclick="me('<%=a.id%>')" class="btn btn-info" role="button">Delete</button>
-                                        <%}%>
-                                </td>
-                            </tr>
-                            <%}%>
-                                <%})%> -->
         </tbody>
 
     </table>
