@@ -6,14 +6,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dien May Xanh</title>
+    <script src="https://kit.fontawesome.com/6a9b663a60.js" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <ul>
+    <div>
+        <nav class="header">
+            <ul>
+                <li>
+                    <img id="logo" src="images/dien.png">
+                </li>
+                <li class="dropdowntp">
+                    <div>Xem giá tồn kho ở </div>
+                    <select name="tri">
+                        <option value="0">Hà Nội</option>
+                        <option value="1">Thành Phố Hồ Chí Minh</option>
+                        <option value="2">Đà Nẵng</option>
+                    </select>
+                </li>
+                <li class="find">
+                    <div class="tim">
+                        <input type="search" class="search" placeholder="Bạn tìm gì?">
+                        <button id="s">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <a href="tel:19001900">
+                        <p>19001900</p>
+                        <p>Tổng Đài Miễn Phí</p>
+                    </a>
+                </li>
+                <li class="dropdownkm">
+                    <p>Kinh Nghiệm Hay</p>
+                    <button class="dropdownkmbtn">Tin Khuyến Mãi</button>
+                    <div class="dropdownkm-content">
+                        <a>Tư Vấn Chọn Mua</a>
+                        <a>Tư Vấn Khuyến Mãi</a>
+                    </div>
+                    <i class="fas fa-arrow-down"></i>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="art">
+        <div class="card">
+            <div class="lab">
+                <label class="sel">#1 Bán Chạy</label>
+                <label class="pay">Trả góp 0%</label>
+            </div>
+            <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+            <div class="content">
+                <img src="images/online.png">
+                <h4 style="margin-bottom: 4px;">SAMSUNG SMART TV 4K 50"</h4>
+                <p style="margin-bottom: 4px;">(UA50NA7090)</p>
+                <h4 style="margin-bottom: 4px;" class="price">12.500.000đ</h4>
+                <div style="margin-bottom:4px" class="sub">
+                    <div>
+                        <h5 class="deduct">13.500.000đ</h5>
+                    </div>
+                    <div>
+                        <span class="per">(-12%)</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 4px;">
+                    Quà<span class="gift"> 300.000đ</span>
+                </p>
+                <div class="comment">
+                    <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+                </div>
 
-        </ul>
-    </nav>
+            </div>
+        </div>
+        <div class="card">
+            <div class="lab">
+                <label class="sel">#1 Bán Chạy</label>
+                <label class="pay">Trả góp 0%</label>
+            </div>
+            <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+            <div class="content">
+                <img src="images/online.png">
+                <h4 style="margin-bottom: 4px;">SAMSUNG SMART TV 4K 50"</h4>
+                <p style="margin-bottom: 4px;">(UA50NA7090)</p>
+                <h4 style="margin-bottom: 4px;" class="price">12.500.000đ</h4>
+                <div style="margin-bottom:4px" class="sub">
+                    <div>
+                        <h5 class="deduct">13.500.000đ</h5>
+                    </div>
+                    <div>
+                        <span class="per">(-12%)</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 4px;">
+                    Quà<span class="gift"> 300.000đ</span>
+                </p>
+                <div class="comment">
+                    <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <aside>
+        <h3 class="size">CHỌN TIVI THEO CỠ MÀN HÌNH</h3>
+        <i id="question" class="far fa-question-circle"></i><span class="should"> Nên chọn ti vi bao nhiêu inch?</span>
+        <img src="images/inch.png"><br>
+
+        <div class="checker">
+            <input type="checkbox"><span>Dưới 32 inch</span>
+        </div>
+        <div class="checker">
+            <input type="checkbox"><span>Từ 32-43 inch</span>
+        </div>
+        <div class="checker">
+            <input type="checkbox"><span>Từ 44-54 inch</span>
+        </div>
+        <div class="checker">
+            <input type="checkbox"><span>Từ 55-64 inch</span>
+        </div>
+        <div class="checker">
+            <input type="checkbox"><span>Từ 65-74 inch</span>
+        </div>
+        <div class="checker">
+            <input type="checkbox"><span>Trên 75 inch</span>
+        </div>
+        <h4>Hoặc tìm theo số inch</h4>
+        <div class="einch">
+            <button class="isearch">
+                <i class="fas fa-search"></i>
+            </button>
+            <input type="search" class="inum" placeholder="Nhập Số">inch
+        </div>
+        <h4>HÃNG</h4>
+        <div class="checker">
+            <input type="checkbox"> <img src="images/Screenshot from 2019-11-21 23-06-15.png">
+        </div>
+        <div class="checker">
+            <input type="checkbox"> <img src="images/Screenshot from 2019-11-21 23-06-26.png">
+        </div>
+        <div class="checker">
+            <input type="checkbox"> <img src="images/Screenshot from 2019-11-21 23-06-37.png">
+        </div>
+        <div class="checker">
+            <input type="checkbox"><img src="images/Screenshot from 2019-11-21 23-06-49.png">
+        </div>
+        <div class="pro">
+            <input type="checkbox"><img src="images/Screenshot from 2019-11-21 23-07-02.png">
+        </div>
+        <div class="checker">
+            <input type="checkbox"><img src="images/Screenshot from 2019-11-21 23-06-49.png">
+        </div>
+        <div class="checker">
+            <input type="checkbox"><img src="images/Screenshot from 2019-11-21 23-06-49.png">
+        </div>
+    </aside>
 </body>
 
 </html>
