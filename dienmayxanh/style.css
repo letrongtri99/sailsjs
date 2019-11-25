@@ -1,6 +1,16 @@
     * {
         margin: 0;
         padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    body {
+        background-color: #f6f4f3;
+    }
+    
+    .main {
+        margin: auto;
+        width: 90%;
     }
     
     .dropdownkmbtn {
@@ -39,8 +49,6 @@
     
     ul {
         list-style-type: none;
-        margin: 0;
-        padding: 0;
         background-color: #558cca;
         overflow: visible;
         display: flex;
@@ -50,12 +58,18 @@
         float: left;
         color: white;
         margin: 3px 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .seltp {
+        cursor: pointer;
+        padding-left: 4px;
     }
     
     #logo {
-        height: 30px;
-        width: 150px;
-        margin-left: 30px;
+        height: 100%;
+        width: 180px;
+        margin-left: 57px;
     }
     
     a {
@@ -65,6 +79,24 @@
     
     .dropdowntp {
         background-color: #2878D7;
+        margin: 7px 0 7px 0;
+        border-radius: 7px;
+        width: 12%;
+    }
+    
+    .pricetp {
+        font-size: 10px;
+        padding-top: 2px;
+        padding-left: 4px;
+    }
+    
+    .btntp {
+        background-color: #2878D7;
+        border: 0;
+        color: white;
+        font-weight: bold;
+        width: 90%;
+        text-align: left;
     }
     
     .search {
@@ -89,7 +121,21 @@
     }
     
     .find {
-        width: 30%;
+        width: 28%;
+    }
+    
+    .telphone {
+        padding-top: 4px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .btnseen {
+        cursor: pointer;
+        background-color: #2878D7;
+        border: 0;
+        color: white;
+        padding: 10px 10px 10px 10px;
     }
     
     .card {
@@ -166,36 +212,70 @@
     
     aside {
         float: right;
-        width: 20%;
+        width: 23%;
         height: 100%;
+        background-color: white;
+        margin-top: 10px;
     }
     
     .art {
         float: left;
-        width: 80%;
+        width: 75%;
+        background-color: white;
+        margin-top: 10px;
+        margin-right: 3px;
     }
     
     .size {
-        font-size: 17px;
+        font-size: 14px;
+        padding: 5px 0 10px 3px;
     }
     
     .should,
     #question {
         color: rgb(73, 128, 199);
         font-weight: normal;
+        font-size: 14px;
+        padding: 5px 0 10px;
     }
     
     .checker {
         float: left;
         width: 50%;
+        padding: 5px 0px 8px;
     }
     
     .checker>span {
         color: rgb(78, 154, 204);
+        font-size: 14px;
+    }
+    
+    .checker>input {
+        vertical-align: bottom;
+        position: relative;
+        bottom: 2px;
+    }
+    
+    .like {
+        padding-top: 105px;
+        font-size: 14px;
     }
     
     .einch {
         height: 25px;
+        font-size: 14px;
+        padding: 7px 35px 7px 0px;
+        position: relative;
+    }
+    
+    .iunit {
+        position: absolute;
+        left: 125px;
+        top: 10px;
+    }
+    
+    .checkinch {
+        padding: 10px;
     }
     
     .isearch {
@@ -207,9 +287,10 @@
     }
     
     .inum {
-        border-left: 0;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
         height: 100%;
-        width: 50%;
+        width: 60%;
     }
     
     .clear {
@@ -217,8 +298,20 @@
     }
     
     .footer {
-        height: 200px;
+        height: 250px;
         position: relative;
+        background-color: white;
+        margin-top: 20px;
+        padding-left: 68px;
+        padding-top: 10px;
+    }
+    
+    .btnfoot {
+        background-color: white;
+        border: 0;
+        color: #288AD6;
+        font-weight: bold;
+        font-size: 14px;
     }
     
     .bottomfoo {
@@ -236,14 +329,17 @@
         width: 20%;
     }
     
+    .contentfoot {
+        font-size: 14px;
+    }
+    
     .infofoo a {
         display: block;
     }
     
     .slideContainer {
-        width: 90%;
+        width: 100%;
         position: relative;
-        margin: auto;
         height: 200px;
     }
     
@@ -268,7 +364,11 @@
         padding: 10px;
         font-weight: bold;
         transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        z-index: 999;
+        height: 20px;
     }
     
     .next {
