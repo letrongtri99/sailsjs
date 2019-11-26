@@ -5,7 +5,7 @@
     }
     
     body {
-        background-color: #f6f4f3;
+        background-color: wheat;
     }
     
     .main {
@@ -198,6 +198,7 @@
         right: 0;
         background-color: yellow;
         padding: 2px;
+        font-size: 10px;
     }
     
     .pict {
@@ -208,6 +209,7 @@
         position: absolute;
         background-color: red;
         padding: 2px;
+        font-size: 12px;
     }
     
     aside {
@@ -220,7 +222,7 @@
     
     .art {
         float: left;
-        width: 75%;
+        width: 76%;
         background-color: white;
         margin-top: 10px;
         margin-right: 3px;
@@ -228,7 +230,7 @@
     
     .size {
         font-size: 14px;
-        padding: 5px 0 10px 3px;
+        padding: 15px 0 10px 3px;
     }
     
     .should,
@@ -316,7 +318,7 @@
     
     .bottomfoo {
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         font-size: 13px;
     }
     
@@ -341,17 +343,30 @@
         width: 100%;
         position: relative;
         height: 200px;
+        overflow: hidden;
+    }
+    
+    #imgSlides1 {
+        transform: translate3d(0, 0, 0);
+    }
+    
+    #imgSlides2 {
+        transform: translate3d(1450px, 0, 0);
+    }
+    
+    #imgSlides3 {
+        transform: translate3d(2900px, 0, 0);
     }
     
     .mySlides {
-        display: none;
+        transition: all 1s ease;
         position: absolute;
     }
     
-    #imgSlides>img {
+    .mySlides>img {
         float: left;
         height: 200px;
-        width: 50%;
+        width: 33.1%;
     }
     
     .prev,
@@ -362,42 +377,33 @@
         width: auto;
         margin-top: -22px;
         padding: 10px;
-        font-weight: bold;
         transition: 0.6s ease;
         border: 0;
         background-color: rgba(0, 0, 0, 0.2);
         color: white;
         z-index: 999;
-        height: 20px;
+        display: inline-block;
+        height: 50px;
     }
     
     .next {
         right: 0;
-        border-radius: 3px 0 0 3px;
     }
     
-    .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
-        animation-name: fade;
-        animation-duration: 1.5s;
-        height: 100%;
+    .firstlist {
+        background-color: white;
+        padding: 10px 0 10px 0;
+        font-size: 15px;
     }
     
-    @-webkit-keyframes fade {
-        from {
-            opacity: .4
-        }
-        to {
-            opacity: 1
-        }
+    #chi {
+        font-weight: none;
+        color: #999;
+        font-size: 12px;
+        padding: 2px 5px 0 0;
     }
     
-    @keyframes fade {
-        from {
-            opacity: .4
-        }
-        to {
-            opacity: 1
-        }
+    .apply {
+        font-size: 14px;
+        padding: 8px 10px 20px;
     }

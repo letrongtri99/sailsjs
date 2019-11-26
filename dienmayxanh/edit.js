@@ -1,18 +1,38 @@
-var slideIndex = 1;
-const showSlides = (n) => {
-    const slides = document.getElementsByClassName("mySlides");
-    slides[0].style.display = "block";
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+const slides = document.getElementsByClassName("mySlides");
+var slideIndex = 0;
+
+const movenext = () => {
+
+    slideIndex++;
+    if (slideIndex < slides.length) {
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.transform = "translate3d(" + (1450 * i - 1450 * slideIndex) + "px,0,0)";
+        }
+    } else {
+        slideIndex = 0;
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.transform = "translate3d(" + (1450 * i) + "px,0,0)";
+        }
     }
-    slides[slideIndex - 1].style.display = "block";
+
 }
-showSlides(slideIndex);
-const plusSlides = (n) => {
-    showSlides(slideIndex += n);
+const moveleft = () => {
+    slideIndex--;
+    if (slideIndex >= 0) {
+
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.transform = "translate3d(" + (1450 * i - 1450 * slideIndex) + "px,0,0)";
+        }
+    } else {
+        slideIndex = slides.length - 1;
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.transform = "translate3d(" + (-1450 * (slides.length - 1 - i)) + "px,0,0)";
+        }
+    }
+
+
 }
+
 data = [{
         "title": "SAMSUNG SMART TV 4K 50''",
         "id": "HGY61FIS6NU",
@@ -515,7 +535,7 @@ data = [{
     }
 ];
 for (var i = 0; i < 12; i++) {
-    document.getElementsByClassName("art")[0].insertAdjacentHTML('beforeend', `
+    document.getElementById("artdetail").insertAdjacentHTML('beforeend', `
     <div class="card">
     <div class="lab">
         <label class="sel">#1 Bán Chạy</label>
@@ -545,4 +565,26 @@ for (var i = 0; i < 12; i++) {
     </div>
 </div>
     `);
+    const btnfoot = document.getElementById("btninfo");
+
+    btnfoot.onclick = () => {
+        document.getElementsByClassName("footer")[0].style.height = "300px";
+        document.getElementById("infoter").insertAdjacentHTML('beforeend', `
+        <a href="" style="margin-top: 10px;" class="policy">Nội Quy Cửa Hàng</a>
+        <a href="" style="margin-top: 10px;" class="policy">In Hóa Đơn Điện Tử</a>
+        <a href="" style="margin-top: 10px;" class="policy">Bán Hàng Doanh Nghiệp</a>
+        `);
+        btnfoot.parentNode.removeChild(btnfoot);
+    }
+    const btnsup = document.getElementById("btnsup");
+    btnsup.onclick = () => {
+        document.getElementsByClassName("footer")[0].style.height = "300px";
+        document.getElementById("infosup").insertAdjacentHTML('beforeend', `
+        <a href="" style="margin-top: 10px;" class="policy">Tìm Trung Tâm Bảo Hành</a>
+        <a href="" style="margin-top: 10px;" class="policy">Chất Lượng Phục Vụ</a>
+        <a href="" style="margin-top: 10px;" class="policy">Hướng Dẫn Trao Thưởng</a>
+        `);
+        btnsup.parentNode.removeChild(btnsup);
+    }
+
 }
