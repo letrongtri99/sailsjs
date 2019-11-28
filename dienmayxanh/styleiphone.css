@@ -1,0 +1,37 @@
+@media screen and (max-width:375px) {
+    .dropdowntp {
+        display: none;
+    }
+    .numtel {
+        display: none;
+    }
+    .dropdownkm {
+        display: none;
+    }
+    #logo {
+        margin-left: 0px;
+        width: 42px;
+    }
+    .find {
+        width: 70vw;
+    }
+    .search {
+        width: 250px;
+    }
+    #s {
+        width: 20px;
+    }
+    .tim {
+        width: 270px;
+    }
+    .more {
+        display: block;
+    }
+    .addbut {
+        height: 30px;
+        width: 25px;
+        margin-top: 5px;
+        border: 0;
+        background-color: #558cca;
+    }
+}

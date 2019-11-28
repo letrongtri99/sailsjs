@@ -634,61 +634,66 @@ data = [{
         "inch": "55-64"
     }
 ];
-for (var i = 0; i < data.length; i++) {
-    document.getElementById("artdetail").insertAdjacentHTML('beforeend', `
-    <div class="card">
-    <div class="lab">
-        <label class="sel">#1 Bán Chạy</label>
-        <label class="pay">Trả góp 0%</label>
-    </div>
-    <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
-    <div class="content">
-        <img src="images/online.png">
-        <h4 style="margin-bottom: 4px;">${data[i].title}</h4>
-        <p style="margin-bottom: 4px;">${data[i].id}</p>
-        <p class="incher">${data[i].inch}</p>
-        <h4 style="margin-bottom: 4px;" class="price">${data[i].price}</h4>
-        <div style="margin-bottom:4px" class="sub">
-            <div>
-                <h5 class="deduct">13.500.000đ</h5>
-            </div>
-            <div>
-                <span class="per">(-12%)</span>
-            </div>
+const loaddata = () => {
+    for (var i = 0; i < data.length; i++) {
+        document.getElementById("artdetail").insertAdjacentHTML('beforeend', `
+        <div class="card">
+        <div class="lab">
+            <label class="sel">#1 Bán Chạy</label>
+            <label class="pay">Trả góp 0%</label>
         </div>
-        <p style="margin-bottom: 4px;">
-            Quà<span class="gift"> 300.000đ</span>
-        </p>
-        <div class="comment">
-            <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+        <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+        <div class="content">
+            <img src="images/online.png">
+            <h4 style="margin-bottom: 4px;">${data[i].title}</h4>
+            <p style="margin-bottom: 4px;">${data[i].id}</p>
+            <p class="incher">${data[i].inch}</p>
+            <h4 style="margin-bottom: 4px;" class="price">${data[i].price}</h4>
+            <div style="margin-bottom:4px" class="sub">
+                <div>
+                    <h5 class="deduct">13.500.000đ</h5>
+                </div>
+                <div>
+                    <span class="per">(-12%)</span>
+                </div>
+            </div>
+            <p style="margin-bottom: 4px;">
+                Quà<span class="gift"> 300.000đ</span>
+            </p>
+            <div class="comment">
+                <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+            </div>
+    
         </div>
-
     </div>
-</div>
-    `);
-    const btnfoot = document.getElementById("btninfo");
+        `);
+    }
+}
+loaddata();
 
-    btnfoot.onclick = () => {
-        document.getElementsByClassName("footer")[0].style.height = "300px";
-        document.getElementById("infoter").insertAdjacentHTML('beforeend', `
+const btnfoot = document.getElementById("btninfo");
+
+btnfoot.onclick = () => {
+    document.getElementsByClassName("footer")[0].style.height = "300px";
+    document.getElementById("infoter").insertAdjacentHTML('beforeend', `
         <a href="" style="margin-top: 10px;" class="policy">Nội Quy Cửa Hàng</a>
         <a href="" style="margin-top: 10px;" class="policy">In Hóa Đơn Điện Tử</a>
         <a href="" style="margin-top: 10px;" class="policy">Bán Hàng Doanh Nghiệp</a>
         `);
-        btnfoot.parentNode.removeChild(btnfoot);
-    }
-    const btnsup = document.getElementById("btnsup");
-    btnsup.onclick = () => {
-        document.getElementsByClassName("footer")[0].style.height = "300px";
-        document.getElementById("infosup").insertAdjacentHTML('beforeend', `
+    btnfoot.parentNode.removeChild(btnfoot);
+}
+const btnsup = document.getElementById("btnsup");
+btnsup.onclick = () => {
+    document.getElementsByClassName("footer")[0].style.height = "300px";
+    document.getElementById("infosup").insertAdjacentHTML('beforeend', `
         <a href="" style="margin-top: 10px;" class="policy">Tìm Trung Tâm Bảo Hành</a>
         <a href="" style="margin-top: 10px;" class="policy">Chất Lượng Phục Vụ</a>
         <a href="" style="margin-top: 10px;" class="policy">Hướng Dẫn Trao Thưởng</a>
         `);
-        btnsup.parentNode.removeChild(btnsup);
-    }
-
+    btnsup.parentNode.removeChild(btnsup);
 }
+
+
 window.onscroll = function() { myFunction() };
 
 // Get the navbar
@@ -750,19 +755,151 @@ for (var i = 0; i < filter.length; i++) {
                 }
             }
         } else {
-            const real = document.getElementsByClassName("incher");
-            const par = document.getElementById("artdetail");
-            console.log(real.length);
-            var del = [];
-            for (var k = 0; k < real.length; k++) {
-                if (real[k].innerText == e.target.value) {
-                    const chil = document.getElementsByClassName("card")[k];
-                    del.push(chil);
+            var checkboxother = 0;
+            document.getElementById("artdetail").innerHTML = " ";
+            for (var i = 0; i < filter.length; i++) {
+                if (filter[i].checked) {
+                    for (var m = 0; m < data.length; m++) {
+                        if (data[m].inch == filter[i].value) {
+                            document.getElementById("artdetail").insertAdjacentHTML('beforeend', `
+            <div class="card">
+            <div class="lab">
+                <label class="sel">#1 Bán Chạy</label>
+                <label class="pay">Trả góp 0%</label>
+            </div>
+            <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+            <div class="content">
+                <img src="images/online.png">
+                <h4 style="margin-bottom: 4px;">${data[m].title}</h4>
+                <p style="margin-bottom: 4px;">${data[m].id}</p>
+                <p class="incher">${data[m].inch}</p>
+                <h4 style="margin-bottom: 4px;" class="price">${data[m].price}</h4>
+                <div style="margin-bottom:4px" class="sub">
+                    <div>
+                        <h5 class="deduct">13.500.000đ</h5>
+                    </div>
+                    <div>
+                        <span class="per">(-12%)</span>
+                    </div>
+                </div>
+                <p style="margin-bottom: 4px;">
+                    Quà<span class="gift"> 300.000đ</span>
+                </p>
+                <div class="comment">
+                    <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+                </div>
+        
+            </div>
+        </div>
+            `);
+                        }
+                    }
+                } else {
+                    checkboxother++;
                 }
             }
-            for (var l = 0; l < del.length; l++) {
-                par.removeChild(del[l]);
+            if (checkboxother == 6) {
+                first = 0;
+                loaddata();
             }
         }
     })
+}
+for (var x = 0; x < 4; x++) {
+    document.getElementById("adsSlides1").insertAdjacentHTML('beforeend', `
+    <div class="card">
+    <div class="lab">
+        <label class="sel">#1 Bán Chạy</label>
+        <label class="pay">Trả góp 0%</label>
+    </div>
+    <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+    <div class="content">
+        <img src="images/online.png">
+        <h4 style="margin-bottom: 4px;">${data[x].title}</h4>
+        <p style="margin-bottom: 4px;">${data[x].id}</p>
+        <p class="incher">${data[x].inch}</p>
+        <h4 style="margin-bottom: 4px;" class="price">${data[x].price}</h4>
+        <div style="margin-bottom:4px" class="sub">
+            <div>
+                <h5 class="deduct">13.500.000đ</h5>
+            </div>
+            <div>
+                <span class="per">(-12%)</span>
+            </div>
+        </div>
+        <p style="margin-bottom: 4px;">
+            Quà<span class="gift"> 300.000đ</span>
+        </p>
+        <div class="comment">
+            <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+        </div>
+
+    </div>
+</div>
+    `);
+}
+for (var t = 4; t < 8; t++) {
+    document.getElementById("adsSlides2").insertAdjacentHTML('beforeend', `
+    <div class="card">
+    <div class="lab">
+        <label class="sel">#1 Bán Chạy</label>
+        <label class="pay">Trả góp 0%</label>
+    </div>
+    <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
+    <div class="content">
+        <img src="images/online.png">
+        <h4 style="margin-bottom: 4px;">${data[t].title}</h4>
+        <p style="margin-bottom: 4px;">${data[t].id}</p>
+        <p class="incher">${data[t].inch}</p>
+        <h4 style="margin-bottom: 4px;" class="price">${data[t].price}</h4>
+        <div style="margin-bottom:4px" class="sub">
+            <div>
+                <h5 class="deduct">13.500.000đ</h5>
+            </div>
+            <div>
+                <span class="per">(-12%)</span>
+            </div>
+        </div>
+        <p style="margin-bottom: 4px;">
+            Quà<span class="gift"> 300.000đ</span>
+        </p>
+        <div class="comment">
+            <span class="rate">4.3/5</span><i id="star" class="fas fa-star"></i> 300 đánh giá
+        </div>
+
+    </div>
+</div>
+    `);
+}
+const ads = document.getElementsByClassName("myAds");
+var slideAdsIndex = 0;
+
+const moveadsright = () => {
+
+    slideAdsIndex++;
+    if (slideAdsIndex < ads.length) {
+        for (var i = 0; i < ads.length; i++) {
+            ads[i].style.transform = "translate3d(" + (925 * i - 925 * slideAdsIndex) + "px,0,0)";
+        }
+    } else {
+        slideAdsIndex = 0;
+        for (var i = 0; i < ads.length; i++) {
+            ads[i].style.transform = "translate3d(" + (925 * i) + "px,0,0)";
+        }
+    }
+
+}
+const moveadsleft = () => {
+    slideAdsIndex--;
+    if (slideAdsIndex >= 0) {
+
+        for (var i = 0; i < ads.length; i++) {
+            ads[i].style.transform = "translate3d(" + (925 * i - 925 * slideAdsIndex) + "px,0,0)";
+        }
+    } else {
+        slideAdsIndex = ads.length - 1;
+        for (var i = 0; i < ads.length; i++) {
+            ads[i].style.transform = "translate3d(" + (-925 * (ads.length - 1 - i)) + "px,0,0)";
+        }
+    }
 }

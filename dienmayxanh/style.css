@@ -69,9 +69,12 @@
     }
     
     #logo {
-        height: 100%;
+        height: 41px;
         width: 180px;
         margin-left: 57px;
+        background-image: url(images/77282440_421902255424832_2456951421954686976_n.png);
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     
     a {
@@ -561,4 +564,62 @@
         z-index: 999;
         background-color: white;
         width: 66.5%;
+    }
+    
+    .slideAds {
+        height: 400px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    #adsSlides1 {
+        transform: translate3d(0, 0, 0);
+    }
+    
+    #adsSlides2 {
+        transform: translate3d(925px, 0, 0);
+    }
+    
+    .prevAds {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 10px;
+        transition: 0.6s ease;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        z-index: 999;
+        display: inline-block;
+        height: 50px;
+        left: 0px;
+    }
+    
+    .nextAds {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 10px;
+        transition: 0.6s ease;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        z-index: 999;
+        display: inline-block;
+        height: 50px;
+        right: 0px;
+    }
+    
+    .myAds {
+        transition: all 1s ease;
+        position: absolute;
+    }
+    
+    .more {
+        display: none;
     }

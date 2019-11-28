@@ -8,14 +8,15 @@
     <title>Dien May Xanh</title>
     <script src="https://kit.fontawesome.com/6a9b663a60.js" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet">
+    <link href="styleiphone.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="head">
         <nav class="header">
             <ul>
-                <li class="dienmay">
-                    <img id="logo" src="images/77282440_421902255424832_2456951421954686976_n.png">
+                <li id="logo" class="dienmay">
+
                 </li>
                 <li class="dropdowntp">
                     <div class="pricetp">Xem giá tồn kho ở </div>
@@ -38,7 +39,7 @@
                         <i class="fas fa-sort-down"></i>
                     </div>
                 </li>
-                <li>
+                <li class="numtel">
                     <a href="tel:19001900">
                         <p class="telphone">19001900</p>
                         <p style="font-size: 12px;">Tổng Đài Miễn Phí</p>
@@ -52,6 +53,11 @@
                         <a>Tư Vấn Khuyến Mãi</a>
                     </div>
                     <i class="fas fa-arrow-down"></i>
+                </li>
+                <li class="more">
+                    <button class="addbut">
+                        <i style="color:white;font-size:24px;" class="fas fa-bars"></i>
+                    </button>
                 </li>
             </ul>
         </nav>
@@ -87,6 +93,16 @@
         <div>
             <div class="art">
                 <div class="apply">Áp dụng tới 17/11/2019</div>
+                <div class="slideAds">
+                    <div id="adsSlides1" class="myAds">
+
+                    </div>
+                    <div id="adsSlides2" class="myAds">
+
+                    </div>
+                    <button class="prevAds" onclick="moveadsleft()">&#10094;</button>
+                    <button class="nextAds" onclick="moveadsright()">&#10095;</button>
+                </div>
                 <div id="order">
                     <div>
                         <span style="font-size:12px;">Xếp theo</span>
