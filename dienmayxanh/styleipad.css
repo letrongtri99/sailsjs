@@ -1,0 +1,64 @@
+@media screen and (max-width:900px) and (min-width:556px) {
+    .bottomfoo,
+    .boxfilter,
+    .famous .checker>input,
+    .del {
+        display: none;
+    }
+    .dropdowntp {
+        display: none;
+    }
+    .more {
+        display: block;
+        margin-left: 18%;
+    }
+    #logo {
+        margin-left: 20px;
+    }
+    .imginch {
+        width: 100%;
+    }
+    .numtel {
+        display: none;
+    }
+    .dropdownkm {
+        display: none;
+    }
+    .find {
+        width: 50%;
+    }
+    .addbut {
+        height: 30px;
+        width: 25px;
+        margin-top: 5px;
+        border: 0;
+        background-color: #558cca;
+    }
+    .mySlides>img {
+        float: left;
+        width: 49.8%;
+    }
+    .card {
+        float: left;
+        width: 33.2%;
+        margin-bottom: 2px;
+    }
+    .size,
+    .should,
+    .checker>span,
+    .like,
+    .einch,
+    .inum {
+        font-size: 10px;
+    }
+    .checker {
+        float: left;
+        width: 48%;
+        margin: 1px;
+        background-color: rgb(224, 214, 214);
+        padding: 2px 0 2px;
+    }
+    .famous .checker {
+        background: white;
+    }
+}

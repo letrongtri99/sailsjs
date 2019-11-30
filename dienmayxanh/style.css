@@ -265,12 +265,12 @@
     }
     
     .like {
-        padding-top: 105px;
+        padding-top: 25px;
         font-size: 14px;
     }
     
     .einch {
-        height: 25px;
+        height: 20px;
         font-size: 14px;
         padding: 7px 35px 7px 0px;
         position: relative;
@@ -357,11 +357,11 @@
     }
     
     #imgSlides2 {
-        transform: translate3d(1450px, 0, 0);
+        transform: translate3d(100%, 0, 0);
     }
     
     #imgSlides3 {
-        transform: translate3d(2900px, 0, 0);
+        transform: translate3d(200%, 0, 0);
     }
     
     .mySlides {
@@ -420,17 +420,12 @@
         border-bottom: 1px solid #ddd;
     }
     
-    .order>label {
-        float: left;
-    }
-    
     .sale {
         color: black;
         font-size: 14px;
     }
     
     .container {
-        display: block;
         position: relative;
         padding-left: 20px;
         margin-bottom: 12px;
@@ -563,7 +558,8 @@
         top: 0;
         z-index: 999;
         background-color: white;
-        width: 66.5%;
+        width: 66.8%;
+        padding-top: 10px;
     }
     
     .slideAds {
@@ -578,7 +574,7 @@
     }
     
     #adsSlides2 {
-        transform: translate3d(925px, 0, 0);
+        transform: translate3d(100%, 0, 0);
     }
     
     .prevAds {
@@ -621,5 +617,9 @@
     }
     
     .more {
+        display: none;
+    }
+    
+    .lessfamous {
         display: none;
     }

@@ -1,4 +1,4 @@
-@media screen and (max-width:375px) {
+@media screen and (max-width:555px) {
     .dropdowntp {
         display: none;
     }
@@ -10,7 +10,7 @@
     }
     #logo {
         margin-left: 0px;
-        width: 42px;
+        width: 100%;
     }
     .find {
         width: 70vw;
@@ -33,5 +33,156 @@
         margin-top: 5px;
         border: 0;
         background-color: #558cca;
+    }
+    .slideContainer {
+        height: 150px;
+    }
+    .mySlides>img {
+        float: left;
+        height: 150px;
+        width: 100%;
+    }
+    aside {
+        float: none;
+        width: 100%;
+    }
+    .imginch {
+        width: 100%;
+    }
+    .boxfilter {
+        display: none;
+    }
+    .checker {
+        float: left;
+        width: 31%;
+        margin: 2px;
+        background-color: rgb(224, 214, 214);
+    }
+    .checker>span {
+        margin-left: 14px;
+    }
+    .like {
+        float: left;
+        width: 45%;
+        padding-top: 10px;
+    }
+    .einch {
+        margin-left: 15px;
+        float: left;
+        width: 30%;
+        padding: 7px 20px 7px 0px;
+    }
+    .findinch {
+        background-color: #d7e4e5;
+        height: 40px;
+        margin-top: 5px;
+    }
+    .inum {
+        width: 80px;
+    }
+    .iunit {
+        position: absolute;
+        left: 105px;
+        top: 10px;
+    }
+    .famous {
+        display: none;
+    }
+    .lessfamous {
+        display: block;
+        height: 50px;
+    }
+    .checkfa {
+        float: left;
+        width: 25%;
+        padding-left: 10px;
+        margin-top: 5px;
+    }
+    .checkfa>input {
+        display: none;
+    }
+    .selprice {
+        margin: 2px 0 0;
+    }
+    .morelabel {
+        float: left;
+        width: 10%;
+        height: 5px;
+    }
+    .morelabel .addbut {
+        background-color: white;
+        margin-top: 0px;
+    }
+    .addbut i {
+        padding-top: 0px;
+    }
+    .art {
+        float: none;
+        width: 100%;
+    }
+    .card {
+        float: left;
+        width: 50%;
+        margin-bottom: 2px;
+    }
+    .del,
+    .boxfilter {
+        display: none;
+    }
+    #order {
+        padding: 5px;
+        display: inline-block;
+    }
+    .checkmark {
+        display: none;
+    }
+    .container {
+        padding-left: 5px;
+        margin-left: 5px;
+        background-color: gainsboro;
+    }
+    .asenc {
+        font-size: 12px;
+    }
+    .fix {
+        width: 87%;
+    }
+    .contentfoot>div {
+        float: none;
+        width: 100%;
+    }
+    .bottomfoo {
+        display: none;
+    }
+    #infoter,
+    .bct,
+    .subdel {
+        display: none;
+    }
+    #infosup {
+        display: none;
+    }
+    .footer {
+        padding-left: 5px;
+    }
+    .resimg {
+        width: 45px;
+    }
+    .checkmark {
+        width: 40px;
+    }
+    #order>label {
+        float: left;
+        width: 22%;
+    }
+    .seller .checker {
+        float: left;
+        width: 47%;
+    }
+    .card {
+        height: 360px;
+    }
+    .slideAds {
+        height: 360px;
     }
 }

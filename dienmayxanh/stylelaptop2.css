@@ -1,0 +1,21 @@
+@media screen and (max-width:1171px)and (min-width:901px) {
+    .dropdowntp,
+    .bottomfoo {
+        display: none;
+    }
+    .numtel {
+        margin-left: 55px;
+        margin-right: 55px;
+    }
+    .more {
+        display: block;
+        margin-left: 12%;
+    }
+    .addbut {
+        height: 30px;
+        width: 25px;
+        margin-top: 5px;
+        border: 0;
+        background-color: #558cca;
+    }
+}

@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/6a9b663a60.js" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet">
     <link href="styleiphone.css" rel="stylesheet">
+    <link href="styleipad.css" rel="stylesheet">
+    <link href="stylelaptop1.css" rel="stylesheet">
+    <link href="stylelaptop2.css" rel="stylesheet">
 </head>
 
 <body>
@@ -72,83 +75,28 @@
         </div>
         <div class="slideContainer">
             <div id="imgSlides1" class="mySlides">
-                <img style="margin-right:4px;" src="images/sstl.png">
-                <img style="margin-right:4px;" src="images/l.png">
+                <img style="margin-right:1px;" src="images/sstl.png">
+                <img style="margin-right:1px;" src="images/l.png">
                 <img src="https://cdn.tgdd.vn/qcao/25_11_2019_16_52_27_640-280.png">
-
             </div>
             <div id="imgSlides2" class="mySlides">
-                <img style="margin-right:4px;" src="images/m.png">
-                <img style="margin-right:4px;" src="images/maynuoc.png">
+                <img style="margin-right:1px;" src="images/m.png">
+                <img style="margin-right:1px;" src="images/maynuoc.png">
                 <img src="https://cdn.tgdd.vn/2019/10/banner/TV-Skyworth-32in-640-280-4-640x280.png">
             </div>
             <div id="imgSlides3" class="mySlides">
-                <img style="margin-right:4px;" src="https://cdn.tgdd.vn/2019/11/banner/BlackFriday-690-300-690x300-(1).png">
-                <img style="margin-right:4px;" src="https://cdn.tgdd.vn/qcao/25_11_2019_14_53_05_Gia-Dung-Black-friday-690-300.png">
+                <img style="margin-right:1px;" src="https://cdn.tgdd.vn/2019/11/banner/BlackFriday-690-300-690x300-(1).png">
+                <img style="margin-right:1px;" src="https://cdn.tgdd.vn/qcao/25_11_2019_14_53_05_Gia-Dung-Black-friday-690-300.png">
                 <img src="https://cdn.tgdd.vn/qcao/11_11_2019_00_48_27_TV-TCL-Nghiepquat-640-280.png">
             </div>
             <button class="prev" onclick="moveleft()">&#10094;</button>
             <button class="next" onclick="movenext()">&#10095;</button>
         </div>
         <div>
-            <div class="art">
-                <div class="apply">Áp dụng tới 17/11/2019</div>
-                <div class="slideAds">
-                    <div id="adsSlides1" class="myAds">
-
-                    </div>
-                    <div id="adsSlides2" class="myAds">
-
-                    </div>
-                    <button class="prevAds" onclick="moveadsleft()">&#10094;</button>
-                    <button class="nextAds" onclick="moveadsright()">&#10095;</button>
-                </div>
-                <div id="order">
-                    <div>
-                        <span style="font-size:12px;">Xếp theo</span>
-                    </div>
-                    <label class="container" style="padding-top:1px;">Bán chạy
-                            <input type="radio" checked="checked" name="radio">
-                            <span class="checkmark"></span>
-                          </label>
-                    <label class="container">Giá cao đến thấp
-                            <input type="radio" name="radio">
-                            <span class="checkmark"></span>
-                          </label>
-                    <label class="container">Giá thấp đến cao
-                            <input type="radio" name="radio">
-                            <span class="checkmark"></span>
-                          </label>
-
-                    <div style="padding-left: 22px;">
-                        <span style="font-size: 12px;margin-top: 0px;">Xem</span>
-                    </div>
-                    <div style="padding-left:5px;padding-right:12px;">
-                        <img style="float:left;" src="images/iconcate.png">
-                        <a style="float:left;" class="sale">Cột</a>
-                    </div>
-                    <div style="padding-left:5px;padding-right:12px;">
-                        <img style="float:left;width:25px;height:22px;" src="images/net2.png">
-                        <a style="float:left;" class="sale">Lưới</a>
-                    </div>
-                    <label style="color:#E3701D;font-weight: bold;" class="label-checkbox">Mẫu 2019
-                            <input type="checkbox" checked="checked">
-                            <span class="checkmark-2"></span>
-                    </label>
-                    <label class="label-checkbox">Trả góp 0-0.5%
-                        <input type="checkbox">
-                        <span class="checkmark-2"></span>
-                    </label>
-                </div>
-                <br>
-                <div id="artdetail">
-
-                </div>
-            </div>
             <aside>
                 <h2 class="size">CHỌN TIVI THEO CỠ MÀN HÌNH</h2>
                 <i id="question" class="far fa-question-circle"></i><a href="" class="should"> Nên chọn ti vi bao nhiêu inch?</a>
-                <img src="images/inch.png"><br>
+                <img class="imginch" src="images/inch.png"><br>
 
                 <div class="checker">
                     <input class="boxfilter" type="checkbox" value="32"><span>Dưới 32 inch</span>
@@ -168,64 +116,145 @@
                 <div class="checker">
                     <input class="boxfilter" type="checkbox" value="75"><span> Trên 75 inch</span>
                 </div>
-                <h4 class="like">Hoặc tìm theo số inch</h4>
-                <div class="einch">
-                    <button class="isearch">
-                    <i class="fas fa-search"></i>
-                </button>
-                    <input maxlength="3" type="text" class="inum" placeholder="Nhập Số"><span class="iunit">inch</span>
+                <div class="clear"></div>
+                <div class="findinch">
+                    <h4 class="like">Hoặc tìm theo số inch</h4>
+                    <div class="einch">
+                        <button class="isearch">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                        <input maxlength="3" type="text" class="inum" placeholder="Nhập Số"><span class="iunit">inch</span>
+                    </div>
                 </div>
-                <h4 style="margin-top:15px;font-size:14px;">HÃNG</h4>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/lg.png">
+                <div class="famous">
+
+                    <h4 style="margin-top:15px;font-size:14px;">HÃNG</h4>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/lg.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/mobell.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/pana.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sam.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sharp.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sky.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sony.png">
+                    </div>
+                    <div class="checker">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/tcl.png">
+                    </div>
                 </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/mobell.png">
+                <div class="lessfamous">
+                    <h4 style="margin-top:15px;margin-bottom:5px;font-size:14px;">Thương hiệu tivi nổi bật</h4>
+                    <div class="checkfa">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/lg.png">
+                    </div>
+                    <div class="checkfa">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/mobell.png">
+                    </div>
+                    <div class="checkfa">
+                        <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/pana.png">
+                    </div>
+                    <div class="morelabel">
+                        <button class="addbut">
+                            <i style="color:blue;font-size:14px;background-color:white;" class="fas fa-arrow-circle-down"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/pana.png">
-                </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sam.png">
-                </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sharp.png">
-                </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sky.png">
-                </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/sony.png">
-                </div>
-                <div class="checker">
-                    <input style="margin-bottom: 4px;" type="checkbox"> <img src="images/tcl.png">
-                </div>
-                <h4 style="margin-top:150px;font-size:14px;">GIÁ BÁN</h4>
-                <div class="checker">
-                    <input type="checkbox"><span>Dưới 5 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 12-15 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 5-7 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 15-20 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 7-10 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 20-50 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Từ 10-12 triệu</span>
-                </div>
-                <div class="checker">
-                    <input type="checkbox"><span>Trên 50 triệu</span>
+                <div class="seller">
+                    <h4 class="selprice" style="font-size:14px;">GIÁ BÁN</h4>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Dưới 5 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 12-15 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 5-7 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 15-20 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 7-10 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 20-50 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Từ 10-12 triệu</span>
+                    </div>
+                    <div class="checker">
+                        <input class="boxfilter" type="checkbox"><span>Trên 50 triệu</span>
+                    </div>
                 </div>
             </aside>
+            <div class="art">
+                <div class="apply">Áp dụng tới 17/11/2019</div>
+                <div class="slideAds">
+                    <div id="adsSlides1" class="myAds">
+
+                    </div>
+                    <div id="adsSlides2" class="myAds">
+
+                    </div>
+                    <button class="prevAds" onclick="moveadsleft()">&#10094;</button>
+                    <button class="nextAds" onclick="moveadsright()">&#10095;</button>
+                </div>
+                <h3 style="margin-top:3px;">Tất cả 238 tivi</h3>
+                <div id="order">
+                    <label class="asenc">
+                        <span>Xếp theo</span>
+                    </label>
+                    <label class="container" style="padding-top:1px;">Bán chạy
+                            <input class="del" type="radio" checked="checked" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                    <label class="container">Giá cao đến thấp
+                            <input class="del" type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                    <label class="container">Giá thấp đến cao
+                            <input class="del" type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                    <br/>
+                    <div class="del" style="padding-left: 22px;">
+                        <span style="font-size: 12px;margin-top: 0px;">Xem</span>
+                    </div>
+                    <label class="del" style="padding-left:5px;padding-right:12px;">
+                        <img style="float:left;" src="images/iconcate.png">
+                        <a style="float:left;" class="sale">Cột</a>
+                    </label>
+                    <label class="del" style="padding-left:5px;padding-right:12px;">
+                        <img style="float:left;width:25px;height:22px;" src="images/net2.png">
+                        <a style="float:left;" class="sale">Lưới</a>
+                    </label>
+                    <label style="color:#E3701D;font-weight: bold;" class="label-checkbox">Mẫu 2019
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark-2"></span>
+                    </label>
+                    <label class="label-checkbox">Trả góp 0-0.5%
+                        <input type="checkbox">
+                        <span class="checkmark-2"></span>
+                    </label>
+                </div>
+                <br>
+                <div id="artdetail">
+
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="clear"></div>
@@ -267,10 +296,10 @@
                 <p style="margin-top: 10px;">
                     Khiếu nại<span style="font-weight:bold;"> 1800.1061</span> (7:30 - 22:00)
                 </p>
-                <img style="width: 98px;height:70px;margin-left:45px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzqVOIEOxvpMsCaDIEP6JgnxwP7UJJQeAccHPKUYqQUU9pSMud">
+                <img class="bct" style="width: 98px;height:70px;margin-left:45px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzqVOIEOxvpMsCaDIEP6JgnxwP7UJJQeAccHPKUYqQUU9pSMud">
             </div>
             <div class="infofoo">
-                <img src="images/subscribe.png">
+                <img class="subdel" src="images/subscribe.png">
                 <p>Website cùng tập đoàn</p>
                 <img src="images/group.png">
             </div>

@@ -1,17 +1,17 @@
 const slides = document.getElementsByClassName("mySlides");
 var slideIndex = 0;
-
+console.log(screen.width);
 const movenext = () => {
 
     slideIndex++;
     if (slideIndex < slides.length) {
         for (var i = 0; i < slides.length; i++) {
-            slides[i].style.transform = "translate3d(" + (1450 * i - 1450 * slideIndex) + "px,0,0)";
+            slides[i].style.transform = "translate3d(" + (100 * i - 100 * slideIndex) + "%,0,0)";
         }
     } else {
         slideIndex = 0;
         for (var i = 0; i < slides.length; i++) {
-            slides[i].style.transform = "translate3d(" + (1450 * i) + "px,0,0)";
+            slides[i].style.transform = "translate3d(" + (100 * i) + "%,0,0)";
         }
     }
 
@@ -21,12 +21,12 @@ const moveleft = () => {
     if (slideIndex >= 0) {
 
         for (var i = 0; i < slides.length; i++) {
-            slides[i].style.transform = "translate3d(" + (1450 * i - 1450 * slideIndex) + "px,0,0)";
+            slides[i].style.transform = "translate3d(" + (100 * i - 100 * slideIndex) + "%,0,0)";
         }
     } else {
         slideIndex = slides.length - 1;
         for (var i = 0; i < slides.length; i++) {
-            slides[i].style.transform = "translate3d(" + (-1450 * (slides.length - 1 - i)) + "px,0,0)";
+            slides[i].style.transform = "translate3d(" + (-100 * (slides.length - 1 - i)) + "%,0,0)";
         }
     }
 
@@ -635,7 +635,7 @@ data = [{
     }
 ];
 const loaddata = () => {
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < 25; i++) {
         document.getElementById("artdetail").insertAdjacentHTML('beforeend', `
         <div class="card">
         <div class="lab">
@@ -644,7 +644,7 @@ const loaddata = () => {
         </div>
         <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
         <div class="content">
-            <img src="images/online.png">
+            <img style="width:100%;" src="images/online.png">
             <h4 style="margin-bottom: 4px;">${data[i].title}</h4>
             <p style="margin-bottom: 4px;">${data[i].id}</p>
             <p class="incher">${data[i].inch}</p>
@@ -729,7 +729,7 @@ for (var i = 0; i < filter.length; i++) {
     </div>
     <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
     <div class="content">
-        <img src="images/online.png">
+        <img style="width:100%;"  src="images/online.png">
         <h4 style="margin-bottom: 4px;">${data[m].title}</h4>
         <p style="margin-bottom: 4px;">${data[m].id}</p>
         <p class="incher">${data[m].inch}</p>
@@ -769,7 +769,7 @@ for (var i = 0; i < filter.length; i++) {
             </div>
             <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
             <div class="content">
-                <img src="images/online.png">
+                <img style="width:100%;" src="images/online.png">
                 <h4 style="margin-bottom: 4px;">${data[m].title}</h4>
                 <p style="margin-bottom: 4px;">${data[m].id}</p>
                 <p class="incher">${data[m].inch}</p>
@@ -814,7 +814,7 @@ for (var x = 0; x < 4; x++) {
     </div>
     <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
     <div class="content">
-        <img src="images/online.png">
+        <img style="width:100%;" src="images/online.png">
         <h4 style="margin-bottom: 4px;">${data[x].title}</h4>
         <p style="margin-bottom: 4px;">${data[x].id}</p>
         <p class="incher">${data[x].inch}</p>
@@ -847,7 +847,7 @@ for (var t = 4; t < 8; t++) {
     </div>
     <img class="pict" src="images/tv.png" alt="Avatar" style="width:100%">
     <div class="content">
-        <img src="images/online.png">
+        <img style="width:100%;" src="images/online.png">
         <h4 style="margin-bottom: 4px;">${data[t].title}</h4>
         <p style="margin-bottom: 4px;">${data[t].id}</p>
         <p class="incher">${data[t].inch}</p>
@@ -879,12 +879,12 @@ const moveadsright = () => {
     slideAdsIndex++;
     if (slideAdsIndex < ads.length) {
         for (var i = 0; i < ads.length; i++) {
-            ads[i].style.transform = "translate3d(" + (925 * i - 925 * slideAdsIndex) + "px,0,0)";
+            ads[i].style.transform = "translate3d(" + (100 * i - 100 * slideAdsIndex) + "%,0,0)";
         }
     } else {
         slideAdsIndex = 0;
         for (var i = 0; i < ads.length; i++) {
-            ads[i].style.transform = "translate3d(" + (925 * i) + "px,0,0)";
+            ads[i].style.transform = "translate3d(" + (100 * i) + "%,0,0)";
         }
     }
 
