@@ -894,12 +894,12 @@ const moveadsleft = () => {
     if (slideAdsIndex >= 0) {
 
         for (var i = 0; i < ads.length; i++) {
-            ads[i].style.transform = "translate3d(" + (925 * i - 925 * slideAdsIndex) + "px,0,0)";
+            ads[i].style.transform = "translate3d(" + (100 * i - 100 * slideAdsIndex) + "%,0,0)";
         }
     } else {
         slideAdsIndex = ads.length - 1;
         for (var i = 0; i < ads.length; i++) {
-            ads[i].style.transform = "translate3d(" + (-925 * (ads.length - 1 - i)) + "px,0,0)";
+            ads[i].style.transform = "translate3d(" + (-100 * (ads.length - 1 - i)) + "%,0,0)";
         }
     }
 }

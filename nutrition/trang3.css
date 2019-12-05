@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 816px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.left {
+    float: left;
+    width: 76.5%;
+}
+
+.right {
+    float: right;
+    width: 23%;
+    height: 340px;
+    margin-top: 0px;
+    border: 2px solid black;
+    border-radius: 45px;
+}
+
+.maincontent {
+    height: 360px;
+}
+
+.mainleft {
+    margin-top: 10px;
+}
+
+.logo {
+    height: 50px;
+    background-image: url(images/logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    width: 8%;
+}
+
+.title {
+    float: left;
+    width: 90%;
+    border-bottom: 3px solid black;
+    height: 48px;
+    margin-left: 3px;
+}
+
+.diet {
+    font-style: italic;
+}
+
+.logoleft {
+    background-image: url(images/leftarrow.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 15px;
+    float: left;
+    width: 12%;
+}
+
+.result {
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.logoright {
+    background-image: url(images/rightarrow.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 15px;
+    float: left;
+    width: 12%;
+}
+
+.tright {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.sidep {
+    background-color: #618ac7;
+    color: white;
+    margin: 7px;
+    padding-top: 10px;
+    border-radius: 45px 0px;
+}
+
+.titlow {
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidep p {
+    padding: 15px 2px 15px 2px;
+    font-size: 13px;
+}
+
+.gen {
+    border-collapse: collapse;
+    margin-left: 5px;
+    margin-right: 4px;
+    font-size: 11px;
+}
+
+.gen td,
+.gen th {
+    border: 0.5px solid black;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+}
+
+.gen th {
+    background-color: grey;
+    color: white;
+}
+
+.ita {
+    font-style: italic;
+}
+
+.nutri img {
+    margin-left: 200px;
+    height: 400px;
+}

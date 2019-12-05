@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 816px;
+}
+
+.basicbio {
+    text-align: center;
+}
+
+.leftgen {
+    float: left;
+    width: 38%;
+}
+
+.maingen {
+    margin-top: 5px;
+}
+
+.rightgen {
+    float: left;
+    width: 60%;
+    background-image: url(images/gen.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 780px;
+}
