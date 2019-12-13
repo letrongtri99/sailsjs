@@ -7,6 +7,10 @@ body {
     width: 816px;
 }
 
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .basicbio {
     text-align: center;
 }

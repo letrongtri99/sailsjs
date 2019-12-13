@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Metabolic</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*page2 css*/
+        
+        * {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #dietary-container {
+            background-image: url(images/mango.png);
+            width: 816px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        div#dietary-req {
+            width: 65%;
+            background-color: #eee;
+            opacity: 0.9;
+            margin: 50px 0 0 30px;
+            border-radius: 4px;
+            -webkit-box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+            -moz-box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+            box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+        }
+        
+        #dietary-req>h2 {
+            font-weight: 600;
+            font-size: 20px;
+            color: #4c7a96;
+            padding: 10px 12px;
+        }
+        
+        #dietary-req>p {
+            padding: 0px 12px 20px;
+            font-size: 14px;
+        }
+        
+        #results {
+            display: table;
+            margin: auto;
+            margin-top: 135px;
+            margin-bottom: 100px;
+            text-align: center;
+            width: 70%;
+            opacity: 0.9;
+            background-color: #eee;
+            border-radius: 4px;
+            -webkit-box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+            -moz-box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+            box-shadow: 0px 0px 5px 8px rgba(224, 215, 224, 1);
+        }
+        
+        #results-header {
+            height: 30px;
+            line-height: 30px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .left {
+            width: 40px;
+            height: 16px;
+        }
+        
+        .right {
+            width: 40px;
+            height: 16px;
+        }
+        
+        .results-row {
+            position: relative;
+            line-height: 20px;
+            padding: 5px 10px;
+        }
+        
+        .results-row:nth-child(9) {
+            margin-bottom: 10px;
+        }
+        
+        .result-type {
+            /* text-align: left; */
+            float: right;
+            width: 115px;
+            height: 20px;
+            font-size: 12px;
+            /* padding: 2px 5px; */
+            background-color: #4c7a96;
+            border-radius: 2px;
+            border: 2px solid;
+            font-weight: bold;
+        }
+        
+        span.results-numberic {
+            position: absolute;
+            top: 4px;
+            left: 10px;
+        }
+        
+        span.results-text {
+            margin-left: 0px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="dietary-container">
+        <div id="dietary-req">
+            <h2>Metabolic Health Factors</h2>
+            <p>
+                The results that are presented in the next section have all been linked to various metabolic factors, such as cholesterol levels and blood sugar, by clinical genetic studies. It is important remember that these results. not always reflect your current
+                physiological... For emmple, if you have genetic markers that are associated with low levels. HOT cholesterol, this does not mean that your HU levels are low or ever guarantee that they will be low. The following results are only an indication
+                of your predisposition to these factors. While genetics. play an important role in physiologiml factors, they are not the only factor. Other lifestyle choices such as diet and exercise have a tremendous influenza on your metabolic factors
+                and overall health.
+
+            </p>
+        </div>
+        <div id="results">
+            <p class="text-align" id="results-header"><span><img class="left" src="images/right.png" alt=""></span> YOUR RESULTS <span><img class="right" src="images/left.png" alt=""></span></p>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Levels of High-Density Lipoprotein (HDL) Cholesterol.......Page 13</span><span class="result-type">Likely Power</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Levels of LDL Cholesterol........................................................................Page 14</span><span class="result-type">Likely Power</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Triglyceride Levels........................................................................................Page 15</span><span class="result-type">Likely Power</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Blood Sugar Levels....................................................................................Page 16</span><span class="result-type">Average Levels</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Iron levels.........................................................................................................Page 17</span><span class="result-type">Average</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Oxidative Stress............................................................................................Page 18</span><span class="result-type">Increased</span>
+            </div>
+            <div class="results-row">
+                <span class="results-numberic"><img src="images/bio.png" alt=""></span>
+                <span class="results-text">Detoxification.................................................................................................Page19</span><span class="result-type">Slightly Reduced</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

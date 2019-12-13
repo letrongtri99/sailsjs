@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -16,11 +17,14 @@ ul {
     width: 76.5%;
 }
 
-.right {
+.nright {
     float: right;
     width: 23%;
-    height: 340px;
     margin-top: 0px;
+}
+
+.right {
+    height: 340px;
     border: 2px solid black;
     border-radius: 45px;
 }
@@ -98,7 +102,7 @@ ul {
 
 .sidep p {
     padding: 15px 2px 15px 2px;
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .gen {
@@ -112,7 +116,7 @@ ul {
 .gen th {
     border: 0.5px solid black;
     margin: 0;
-    padding: 4px;
+    padding: 3px;
     text-align: center;
 }
 
